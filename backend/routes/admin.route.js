@@ -3,6 +3,7 @@ const ProductsModel = require('../models/data.model');
 const jwt=require('jsonwebtoken');
 const bcrypt=require('bcrypt');
 const AdminModel = require('../models/admin.model');
+const UserModel = require('../models/user.model');
 const admin=express.Router();
 
 
@@ -35,7 +36,17 @@ admin.delete('/delete/:id',async(req,res)=>{
     } catch (error) {
         res.status(501).send({"error":"failed to delete the product"});
     }
-})
+});
+
+// get user
+admin.get('/userList',async(req,res)=>{
+    try {
+        const data= await UserModel.find();
+        res.status(200).send(data);
+    } catch (error) {
+        res.status(501).send({"error":"failed to get the user data"});
+    }
+});
 
 // login
 admin.post('/login',async(req,res)=>{
