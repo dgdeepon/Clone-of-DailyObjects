@@ -8,7 +8,7 @@ import {
     Stack,
     Text,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React from "react";
 
 import offerBannar from "../Assets/bannars/offer_bannar.webp";
 import bannar1 from "../Assets/bannars/bannar1.webp";
@@ -22,8 +22,6 @@ import prod_gif from "../Assets/bannars/prod_video1.gif";
 import ProductCarousel from "../Carousel/ProductCarousel";
 
 const LandingPage = () => {
-    const [rotation, setRotation] = useState(false);
-
     return (
         <div>
             <Box>
@@ -366,7 +364,58 @@ const LandingPage = () => {
             <Box>
                 <Image src={bannar7} />
             </Box>
-            <Box></Box>
+            <Box
+                display={"flex"}
+                flexDirection={{ lg: "row", base: "column" }}
+                justifyContent={"space-evenly"}
+                padding={"80px 35px"}
+            >
+                <Box
+                    w={{ lg: "40%", base: "100%" }}
+                    // border={"1px solid black"}
+                    textAlign={"left"}
+                    display={"flex"}
+                >
+                    <Stack spacing={3} mb={{ base: "15px" }}>
+                        <Box>
+                            <Heading
+                                fontSize={"50px"}
+                                fontWeight={"600"}
+                                fontFamily={"Fira Sans Extra Condensed"}
+                            >
+                                OUR STORY
+                            </Heading>
+                        </Box>
+                        <Box>
+                            <Text fontSize={"18px"} color={"blackAlpha.900"}>
+                                Founded in 2012, DailyObjects is a
+                                design-obsessed lifestyle accessories brand
+                                committed to making your everyday carry
+                                #lessordinary.
+                            </Text>
+                        </Box>
+                        <Box>
+                            <Text fontSize={"18px"} color={"blackAlpha.900"}>
+                                You can look forward to a carefully-crafted
+                                range of products, made from long-lasting
+                                materials, with designs that stand out and make
+                                your life easy. With DailyObjects, let your
+                                lifestyle reflect your sensibilities as you go
+                                on to make your every day #lessordinary.
+                            </Text>
+                        </Box>
+                        <Box>
+                            <Text textDecoration={"underline"}>
+                                <Link>Read more</Link>
+                            </Text>
+                        </Box>
+                    </Stack>
+                </Box>
+
+                <Box w={{ lg: "40%", base: "100%" }}>
+                    <Image src="https://images.dailyobjects.com/marche/assets/images/other/Our-Story-updated01.jpg?tr=cm-pad_crop,v-2,dpr-1" />
+                </Box>
+            </Box>
         </div>
     );
 };
