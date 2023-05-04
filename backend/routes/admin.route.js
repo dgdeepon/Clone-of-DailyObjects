@@ -48,6 +48,16 @@ admin.get('/userList',async(req,res)=>{
     }
 });
 
+// get admins
+admin.get('/adminList',async(req,res)=>{
+    try {
+        const data=await AdminModel.find();
+        res.status(200).send(data);
+    } catch (error) {
+        res.status(501).send({"error":"failed to get the admin data"});
+    }
+})
+
 // login
 admin.post('/login',async(req,res)=>{
     try {
