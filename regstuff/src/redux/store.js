@@ -1,8 +1,8 @@
 import { applyMiddleware, legacy_createStore,combineReducers } from 'redux';
 import thunk from 'redux-thunk';
-
-
-const mainReducer=combineReducers({
+import {reducer as adminreducer} from "./AdminReducer/Reducer"
+import {reducer as adminregister} from "./AdminReducer/Register/Reducer"
+const mainReducer=combineReducers({adminreducer,adminregister
 
 });
 
