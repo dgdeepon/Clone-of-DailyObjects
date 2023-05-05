@@ -22,6 +22,8 @@ app.use('/admin/add',AdminAuth);
 app.use('/admin/edit/:id',AdminAuth);
 app.use('/admin/delete/:id',AdminAuth);
 app.use('/admin/register',AdminAuth);
+app.use('/admin/userList',AdminAuth);
+app.use('/admin/adminList',AdminAuth);
 
 // admin
 app.use('/admin',admin);

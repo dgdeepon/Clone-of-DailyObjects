@@ -1,16 +1,11 @@
-import "./App.css";
-import Footer from "./Homepage/Footer/Footer";
-import LandingPage from "./Homepage/LandingPage/LandingPage";
-import Navbar from "./Homepage/Navbar/Navbar";
-
+import './App.css';
+import {Login} from './Admin/Login';
+import Register from './Admin/Register';
 function App() {
-    return (
-        <div className="App">
-            <Navbar />
-            <LandingPage />
-            {/* <Footer /> */}
-        </div>
-    );
+  return (
+    <div className="App">
+    </div>
+  );
 }
 
 export default App;
