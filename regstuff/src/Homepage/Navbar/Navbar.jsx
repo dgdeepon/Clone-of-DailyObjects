@@ -26,7 +26,7 @@ import {
     IoPersonOutline,
     IoSearchOutline,
 } from "react-icons/io5";
-import "./Navbar.css";
+import "../Landing.css";
 
 export default function WithSubnavigation() {
     const { isOpen, onToggle } = useDisclosure();

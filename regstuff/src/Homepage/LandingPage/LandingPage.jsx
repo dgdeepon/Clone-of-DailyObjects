@@ -143,7 +143,6 @@ const LandingPage = () => {
 
             <Box h={{ lg: 14, base: 8 }}></Box>
 
-            {/* Product Carousel - 1 */}
             <Box w={{ lg: "95%" }} margin={"auto"}>
                 <Heading
                     fontSize={{ lg: "26px", base: "md" }}
@@ -259,7 +258,6 @@ const LandingPage = () => {
 
             <Box h={{ lg: 14, base: 8 }}></Box>
 
-            {/* Product Carousel - 2 */}
             <Box w={{ lg: "95%" }} margin={"auto"}>
                 <Heading
                     fontSize={{ lg: "26px", base: "md" }}
