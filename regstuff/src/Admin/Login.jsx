@@ -87,7 +87,7 @@ dispatch(adminlogin(logindata)).then((res)=>{
   dispatch(adminloginsuccess(res.data))
   toast({ description: `${res.data.success}`,position:"top "}
  )
- navigate("admin/dashboard")
+ navigate("/admin/dashboard")
 }).catch((err)=>
 {
   dispatch(adminloginfailed(err.response.data))

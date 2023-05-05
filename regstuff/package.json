@@ -19,6 +19,7 @@
     "@testing-library/user-event": "^13.5.0",
     "@types/react": "^18.2.3",
     "axios": "^1.4.0",
+    "feather-icons": "^4.29.0",
     "framer-motion": "^10.12.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -28,6 +29,7 @@
     "react-router-dom": "^6.11.0",
     "react-scripts": "5.0.1",
     "react-slick": "^0.29.0",
+    "react-virtuoso": "^4.3.5",
     "redux": "^4.2.1",
     "redux-thunk": "^2.4.2",
     "web-vitals": "^2.1.4"
