@@ -7,6 +7,8 @@ const AdminAuth = require("./middlewares/AdminAuth.middleware");
 const app=express();
 const cors=require('cors');
 const user = require("./routes/user.route");
+const cart = require("./routes/cart.route");
+const UserAuth = require("./middlewares/UserAuth.middleware");
 
 app.use(cors());
 app.use(express.json());
@@ -24,12 +26,20 @@ app.use('/admin/delete/:id',AdminAuth);
 app.use('/admin/register',AdminAuth);
 app.use('/admin/userList',AdminAuth);
 app.use('/admin/adminList',AdminAuth);
+app.use('/admin/cart',AdminAuth);
 
 // admin
 app.use('/admin',admin);
 
 // user route
 app.use('/user',user)
+
+
+// user auth
+app.use('/cartData',UserAuth);
+
+// cart route
+app.use('/cartData',cart);
 
 
 
