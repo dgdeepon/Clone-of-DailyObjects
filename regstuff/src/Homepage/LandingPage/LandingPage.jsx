@@ -4,11 +4,11 @@ import {
     HStack,
     Heading,
     Image,
-    Link,
     Stack,
     Text,
 } from "@chakra-ui/react";
 import React from "react";
+import { Link } from "react-router-dom";
 
 import offerBannar from "../Assets/bannars/offer_bannar.webp";
 import bannar1 from "../Assets/bannars/bannar1.webp";
@@ -143,6 +143,7 @@ const LandingPage = () => {
 
             <Box h={{ lg: 14, base: 8 }}></Box>
 
+            {/* Product Carousel - 1 */}
             <Box w={{ lg: "95%" }} margin={"auto"}>
                 <Heading
                     fontSize={{ lg: "26px", base: "md" }}
@@ -258,6 +259,7 @@ const LandingPage = () => {
 
             <Box h={{ lg: 14, base: 8 }}></Box>
 
+            {/* Product Carousel - 2 */}
             <Box w={{ lg: "95%" }} margin={"auto"}>
                 <Heading
                     fontSize={{ lg: "26px", base: "md" }}
