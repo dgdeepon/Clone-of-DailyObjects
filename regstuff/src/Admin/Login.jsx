@@ -87,7 +87,7 @@ dispatch(adminlogin(logindata)).then((res)=>{
   dispatch(adminloginsuccess(res.data))
   toast({ description: `${res.data.success}`,position:"top "}
  )
- navigate("admin/dashboard")
+ navigate("/admin/dashboard")
 }).catch((err)=>
 {
   dispatch(adminloginfailed(err.response.data))
@@ -219,16 +219,7 @@ dispatch(adminlogin(logindata)).then((res)=>{
                 Sign in
               </Button>
             </form>
-            <NavLink to="/admin/register">
-            <Button
-              variant="outlined"
-              color="neutral"
-              fullWidth
-              startDecorator={<AppRegistrationIcon/>}
-            >
-     
-           Register      
-            </Button> </NavLink>
+           
           </Box>
           <Box component="footer" sx={{ py: 3 }}>
             <Typography level="body3" textAlign="center">

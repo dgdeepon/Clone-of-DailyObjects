@@ -20,6 +20,7 @@
     "@types/react": "^18.2.3",
     "axios": "^1.4.0",
     "bootstrap": "^5.2.3",
+    "feather-icons": "^4.29.0",
     "framer-motion": "^10.12.4",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.4",
