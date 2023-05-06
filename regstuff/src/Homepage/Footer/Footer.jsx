@@ -12,15 +12,7 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import "../Landing.css";
-import {
-    FiArrowLeft,
-    FiBox,
-    FiCheck,
-    FiFacebook,
-    FiInstagram,
-    FiTwitter,
-    FiYoutube,
-} from "react-icons/fi";
+import { FiArrowLeft, FiBox, FiCheck, FiInstagram } from "react-icons/fi";
 import {
     RiFacebookFill,
     RiPinterestFill,
@@ -44,30 +36,41 @@ import visa from "./footer-assets/visa-update.webp";
 const Footer = () => {
     return (
         <div>
+            <Divider />
             <Box margin={"50px 2px 20px 2px"}>
                 <Heading
                     fontSize={{ lg: "28px", md: "18px", sm: "16px" }}
                     fontFamily={"Fira Sans Extra Condensed"}
-                    mb={'30px'}
+                    mb={"30px"}
                 >
                     GET EXCLUSIVE ACCESS TO NEW PRODUCTS, DEALS & SURPRISE
                     TREATS
                 </Heading>
-                <Box w={"484px"} h={"55px"} margin={"auto"}>
+                <Box
+                    w={{ lg: "484px", md: "50%", sm: "80%" }}
+                    h={"55px"}
+                    margin={"auto"}
+                >
                     <HStack>
                         <Input
                             borderRadius={"0"}
                             placeholder="Enter your Email"
-                            size={"lg"}
-                            fontSize={'14px'}
+                            size={{ lg: "lg", md: "md", sm: "sm" }}
+                            fontSize={"14px"}
                         />
                         <Button
-                            size={{ lg: "lg" }}
+                            size={{ lg: "lg", md: "md", sm: "sm" }}
                             backgroundColor={"#BFBFBF"}
                             color={"black"}
                             borderRadius={"0"}
                         >
-                            <Text fontSize={'16px'} fontFamily={"Fira Sans Extra Condensed"} fontWeight={'600'}>SUBSCRIBE</Text>
+                            <Text
+                                fontSize={"16px"}
+                                fontFamily={"Fira Sans Extra Condensed"}
+                                fontWeight={"600"}
+                            >
+                                SUBSCRIBE
+                            </Text>
                         </Button>
                     </HStack>
                 </Box>
@@ -75,7 +78,7 @@ const Footer = () => {
 
             <Heading
                 margin={"50px 2px 20px 2px"}
-                fontSize={"26px"}
+                fontSize={{ lg: "26px", md: "18px", sm: "16px" }}
                 fontFamily={"Fira Sans Extra Condensed"}
             >
                 FEATURED IN
@@ -87,7 +90,7 @@ const Footer = () => {
             <Divider />
             <Heading
                 margin={"30px 2px 20px"}
-                fontSize={"26px"}
+                fontSize={{ lg: "26px", md: "18px", sm: "16px" }}
                 fontFamily={"Fira Sans Extra Condensed"}
             >
                 HONEST REVIEWS. NOTHING ELSE.
@@ -102,10 +105,14 @@ const Footer = () => {
                 display={"flex"}
                 justifyContent={"space-evenly"}
             >
-                <HStack w={"148px"} h={"40px"} justifyContent={"space-between"}>
+                <HStack
+                    w={{ lg: "148px", base: "120px" }}
+                    h={"40px"}
+                    justifyContent={"space-between"}
+                >
                     <Box
-                        w={"40px"}
-                        h={"40px"}
+                        w={{ lg: "40px", base: "30px" }}
+                        h={{ lg: "40px", base: "30px" }}
                         borderRadius={"50%"}
                         border={"1px solid black"}
                         display={"flex"}
@@ -116,10 +123,14 @@ const Footer = () => {
                     </Box>
                     <Text fontSize={"13px"}>Quick Delivery</Text>
                 </HStack>
-                <HStack w={"148px"} h={"40px"} justifyContent={"space-between"}>
+                <HStack
+                    w={{ lg: "148px", base: "120px" }}
+                    h={"40px"}
+                    justifyContent={"space-between"}
+                >
                     <Box
-                        w={"40px"}
-                        h={"40px"}
+                        w={{ lg: "40px", base: "30px" }}
+                        h={{ lg: "40px", base: "30px" }}
                         borderRadius={"50%"}
                         border={"1px solid black"}
                         display={"flex"}
@@ -130,10 +141,14 @@ const Footer = () => {
                     </Box>
                     <Text fontSize={"13px"}>Easy Returns</Text>
                 </HStack>
-                <HStack w={"148px"} h={"40px"} justifyContent={"space-between"}>
+                <HStack
+                    w={{ lg: "148px", base: "120px" }}
+                    h={"40px"}
+                    justifyContent={"space-between"}
+                >
                     <Box
-                        w={"40px"}
-                        h={"40px"}
+                        w={{ lg: "40px", base: "30px" }}
+                        h={{ lg: "40px", base: "30px" }}
                         borderRadius={"50%"}
                         border={"1px solid black"}
                         display={"flex"}
@@ -154,7 +169,8 @@ const Footer = () => {
             >
                 {/* Left section */}
                 <Box
-                    w={"70%"}
+                    w={{ lg: "70%", base: "90%" }}
+                    h={{ lg: "265px " }}
                     display={"flex"}
                     alignItems={"center"}
                     marginLeft={"25px"}
@@ -162,9 +178,9 @@ const Footer = () => {
                     <HStack w={"100%"}>
                         <Box
                             w={"33.33%"}
-                            h={"263px"}
+                            h={"265px"}
                             // border={"1px solid black"}
-                            textAlign={"left"}
+                            textAlign={{ lg: "left", base: "start" }}
                         >
                             <Heading
                                 fontSize={"18px"}
@@ -183,8 +199,8 @@ const Footer = () => {
                         </Box>
                         <Box
                             w={"33.33%"}
-                            h={"263px"}
-                            // border={"1px solid black"}
+                            // h={"fit-content"}
+                            border={"1px solid black"}
                             textAlign={"left"}
                         >
                             <Heading
@@ -239,7 +255,11 @@ const Footer = () => {
                 </Box>
 
                 {/* Right section */}
-                <Box w={"28%"}>
+                <Box
+                    w={{ lg: "28%", base: "100%" }}
+                    display={"flex"}
+                    flexDirection={{ lg: "column", base: "row" }}
+                >
                     <Box
                         padding={"47px 30px 47px 34px"}
                         border={"1px solid lightgrey"}
@@ -353,40 +373,42 @@ const Footer = () => {
                 >
                     100% SECURE PAYMENT
                 </Text>
-                <Flex
-                    direction={{ lg: "row", md: "row", sm: "column" }}
-                    justifyContent={"center"}
-                >
-                    <HStack>
-                        <Box w={"82px"}>
-                            <Image src={amex} />
-                        </Box>
-                        <Box w={"82px"}>
-                            <Image src={maestro} />
-                        </Box>
-                        <Box w={"82px"}>
-                            <Image src={mastercard} />
-                        </Box>
-                        <Box w={"82px"}>
-                            <Image src={mobikwik} />
-                        </Box>
-                    </HStack>
-                    <Box m={1}></Box>
-                    <HStack>
-                        <Box w={"82px"}>
-                            <Image src={paytm} />
-                        </Box>
-                        <Box w={"82px"}>
-                            <Image src={rupay} />
-                        </Box>
-                        <Box w={"82px"}>
-                            <Image src={upi} />
-                        </Box>
-                        <Box w={"82px"}>
-                            <Image src={visa} />
-                        </Box>
-                    </HStack>
-                </Flex>
+                <Box w={"fit-content"} margin={"auto"}>
+                    <Flex
+                        direction={{ lg: "row", md: "row", sm: "column" }}
+                        justifyContent={"center"}
+                    >
+                        <HStack>
+                            <Box w={"82px"}>
+                                <Image src={amex} />
+                            </Box>
+                            <Box w={"82px"}>
+                                <Image src={maestro} />
+                            </Box>
+                            <Box w={"82px"}>
+                                <Image src={mastercard} />
+                            </Box>
+                            <Box w={"82px"}>
+                                <Image src={mobikwik} />
+                            </Box>
+                        </HStack>
+                        <Box m={1}></Box>
+                        <HStack>
+                            <Box w={"82px"}>
+                                <Image src={paytm} />
+                            </Box>
+                            <Box w={"82px"}>
+                                <Image src={rupay} />
+                            </Box>
+                            <Box w={"82px"}>
+                                <Image src={upi} />
+                            </Box>
+                            <Box w={"82px"}>
+                                <Image src={visa} />
+                            </Box>
+                        </HStack>
+                    </Flex>
+                </Box>
             </Box>
 
             <Box

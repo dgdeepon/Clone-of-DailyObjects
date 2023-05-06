@@ -1,6 +1,7 @@
 import {
     Box,
     Button,
+    Flex,
     HStack,
     Heading,
     Image,
@@ -153,7 +154,12 @@ const LandingPage = () => {
                 >
                     COLLECTIONS
                 </Heading>
-                <HStack spacing={3} mt={5}>
+                <Flex
+                    direction={{ lg: "row", base: "column" }}
+                    // spacing={3}
+                    gap={3}
+                    mt={5}
+                >
                     <Box w={{ lg: "450px" }} h={{ lg: "653px" }}>
                         <Stack spacing={2}>
                             <Image src="https://images.dailyobjects.com/marche/assets/images/other/collection-08-01.jpg?tr=cm-pad_crop,v-2,dpr-1" />
@@ -241,7 +247,7 @@ const LandingPage = () => {
                             </Text>
                         </Stack>
                     </Box>
-                </HStack>
+                </Flex>
             </Box>
 
             <Box h={{ lg: 14, base: 8 }}></Box>
