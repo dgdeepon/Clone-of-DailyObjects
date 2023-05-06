@@ -2,16 +2,33 @@ import { Box, Button, Grid, Text, Image } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import AllProducts from "./AllProducts";
+import { useLocation } from "react-router-dom";
 
 
 const Products = () => {
+    const location=useLocation()
     const [filters, setfilters] = useState(false);
     const [data, setdata] = useState([]);
+    const [cases,setcases]=useState(false)
+    // let names = location.pathname;
+    // const last = names.split("/");
+    // let x = last[last.length - 1]
 
-    useEffect(() => {
+    // useEffect(() => {
+    //     axios
+	// 		.get(`https://dailyobject-clonebe.onrender.com/data`)
+	// 		.then((res) => setdata(res.data));
+    // }, []);
+    useEffect((x) => {
+        if(x==="iphone14"||x==="iphone Pro Max" ||x==="Samsung"||x==="OnePlus"){
+            setcases(false)
+        }else{
+          setcases(true)
+        }
         axios
-			.get(`https://dailyobject-clonebe.onrender.com/data`)
-			.then((res) => setdata(res.data));
+		.get(`https://dailyobject-clonebe.onrender.com/data?brands=${x}`)
+		.then((res) => setdata(res.data));
+                    
     }, []);
 
     //sorting
@@ -41,10 +58,8 @@ const Products = () => {
     const Allproductsshow = () => {
         setdata([]);
         axios
-					.get(
-						`https://dailyobject-clonebe.onrender.com/data`
-					)
-					.then((res) => setdata(res.data));
+		.get(`https://dailyobject-clonebe.onrender.com/data`)
+		.then((res) => setdata(res.data));
     }
 
     return (
@@ -64,11 +79,11 @@ const Products = () => {
             </Text>
             <Box w={{lg:"55%",md:"95%"}} display={"flex"} gap="2%" m="auto" mt="3%">
                 <Box onClick={Allproductsshow}>
-                    <Box borderRadius={"50%"} h="61%" w="68px" bg="green">
-                        <Text textAlign={"center"} pt="25px" color={"white"}>
-                            All
-                        </Text>
-                    </Box>
+                <Image
+                        borderRadius={"50%"}
+                        m="auto"
+                        src="https://images.dailyobjects.com/marche/icons/new-arrival/all.png?tr=cm-pad_resize,v-2,w-70,h-70,dpr-1"
+                    />
                     <Text textAlign={"center"} fontSize={"sm"}>
                         All
                     </Text>
@@ -93,6 +108,24 @@ const Products = () => {
                         src="https://images.dailyobjects.com/marche/icons/filter/updated-filter-icons2.png?tr=cm-pad_resize,v-2,w-70,h-70,dpr-1"
                     />
                     <Text textAlign={"center"}>iphone14 Pro Max</Text>
+                </Box>
+                <Box  value="Samsung"
+                    onClick={() => productbrand("Samsung")}>
+                    <Image
+                        borderRadius={"50%"}
+                        m="auto"
+                        src="https://images.dailyobjects.com/marche/icons/category/glass-cases.png?tr=cm-pad_resize,v-2,w-70,h-70,dpr-1"
+                    />
+                    <Text textAlign={"center"}>Samsung</Text>
+                </Box>
+                <Box  value="OnePlus"
+                    onClick={() => productbrand("OnePlus")}>
+                    <Image
+                        borderRadius={"50%"}
+                        m="auto"
+                        src="https://images.dailyobjects.com/marche/icons/category/designer-glass-cases.png?tr=cm-pad_resize,v-2,w-70,h-70,dpr-1"
+                    />
+                    <Text textAlign={"center"}>OnePlus</Text>
                 </Box>
 
                 
