@@ -5,7 +5,7 @@ import Register from './Admin/Register';
 function App() {
   return (
     <div className="App">
-      
+
     </div>
   );
 }
