@@ -31,7 +31,7 @@ function Account() {
         <Text as={'b'} fontSize={'4xl'}>MY ACCOUNT</Text>
         <Divider/>
         {token == '' ?  
-        <Grid gridTemplateColumns={'20% 70%'} gap={'5%'} textAlign={'left'}>
+        <Grid gridTemplateColumns={{base:'1fr',lg:'20% 70%'}} gap={'5%'} textAlign={'left'}>
             <VStack>
                 <Text as={'b'} fontSize={'xl'}>
                     GUEST
@@ -47,7 +47,7 @@ function Account() {
                 <Text></Text>
             </VStack>
         </Grid> :
-            <Grid gridTemplateColumns={'20% 70%'} gap={'5%'}>
+            <Grid gridTemplateColumns={{base:'1fr',lg:'20% 70%'}} gap={'5%'}>
             <VStack textAlign={'left'}>
                 <Text as={'b'} fontSize={'xl'}>
                     {userName}
