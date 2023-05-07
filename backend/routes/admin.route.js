@@ -4,6 +4,7 @@ const jwt=require('jsonwebtoken');
 const bcrypt=require('bcrypt');
 const AdminModel = require('../models/admin.model');
 const UserModel = require('../models/user.model');
+const CartModel = require('../models/cart.model');
 const admin=express.Router();
 
 
@@ -55,6 +56,16 @@ admin.get('/adminList',async(req,res)=>{
         res.status(200).send(data);
     } catch (error) {
         res.status(501).send({"error":"failed to get the admin data"});
+    }
+});
+
+// get cart data
+admin.get('/cart',async(req,res)=>{
+    try {
+        const data=await CartModel.find();
+        res.status(200).send(data);
+    } catch (error) {
+        res.status(501).send({"error":"failed to get the cart data"});
     }
 })
 

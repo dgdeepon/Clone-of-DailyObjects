@@ -82,7 +82,7 @@ setRegisterdata({...registerdata,[name]:value})
     
     dispatch(adminregister(registerdata)).then((res)=>{
       toast({ description: `${res.data.success}`,position:"top "})
-      navigate("/admin/login")
+      navigate("/admin/dashboard/admin ")
     }).catch((err)=>{
       console.log(err)
       toast({ description: `${err.response.data.failed}`,position:"top "})
