@@ -1,0 +1,69 @@
+.container{
+    display: flex;
+    border: 1px solid black;
+    height: 600px;
+    width: 100%;
+    /* align-items: center;
+    justify-content: center; */
+}
+.box{
+   border: 0px solid black;
+    width: 30%;
+}
+.boxScroll{
+    border: 1px solid black;
+    width: 50%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.card{
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid black;
+    height: 200px;
+    width: 100%;
+}
+
+.cardImage{
+    border: 1px solid black;
+    width: 20%;
+    height: 100%;
+}
+
+.cardContent{
+    border: 1px solid black;
+    width: 70%;
+    height: 100%;
+}
+
+.cardContainerChildOne{
+    border: 1px solid black;
+    width: 100%;
+    height: 70%;
+}
+.cardContainerChildTwo{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid black;
+    width: 100%;
+    height: 30%;
+}
+
+.btn{
+    display: flex;
+    border: 1px solid black;
+    width: 30%;
+    height: 70%;
+}
+.subBtn{
+    border: 1px solid black;
+    width: 30%;
+}
+
+.dlt{
+    border: 1px solid black;
+    width: 10%;
+    height: 70%;
+}
