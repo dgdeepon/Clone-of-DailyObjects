@@ -2,6 +2,7 @@ import {
     Box,
     Button,
     Flex,
+    Grid,
     HStack,
     Heading,
     Image,
@@ -154,12 +155,7 @@ const LandingPage = () => {
                 >
                     COLLECTIONS
                 </Heading>
-                <Flex
-                    direction={{ lg: "row", base: "column" }}
-                    // spacing={3}
-                    gap={3}
-                    mt={5}
-                >
+                <Grid templateColumns={"repeat(3, 1fr)"} gap={4} mt={5}>
                     <Box w={{ lg: "450px" }} h={{ lg: "653px" }}>
                         <Stack spacing={2}>
                             <Image src="https://images.dailyobjects.com/marche/assets/images/other/collection-08-01.jpg?tr=cm-pad_crop,v-2,dpr-1" />
@@ -247,7 +243,7 @@ const LandingPage = () => {
                             </Text>
                         </Stack>
                     </Box>
-                </Flex>
+                </Grid>
             </Box>
 
             <Box h={{ lg: 14, base: 8 }}></Box>
@@ -274,7 +270,7 @@ const LandingPage = () => {
                 >
                     FEATURED COLLECTIONS
                 </Heading>
-                <HStack spacing={3} mt={5}>
+                <Grid templateColumns={"repeat(3, 1fr)"} gap={4} mt={5}>
                     <Box w={{ lg: "450px" }} h={{ lg: "653px" }}>
                         <Stack spacing={2}>
                             <Image src="https://images.dailyobjects.com/marche/assets/images/homepage/slider/paws_and_claws_revised-01.jpg?tr=cm-pad_crop,v-2,dpr-1" />
@@ -362,7 +358,7 @@ const LandingPage = () => {
                             </Text>
                         </Stack>
                     </Box>
-                </HStack>
+                </Grid>
             </Box>
 
             <Box h={{ lg: 14, base: 8 }}></Box>

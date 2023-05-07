@@ -170,7 +170,7 @@ const Footer = () => {
                 {/* Left section */}
                 <Box
                     w={{ lg: "70%", base: "90%" }}
-                    h={{ lg: "265px " }}
+                    // h={{ lg: "265px " }}
                     display={"flex"}
                     alignItems={"center"}
                     marginLeft={"25px"}
@@ -178,7 +178,7 @@ const Footer = () => {
                     <HStack w={"100%"}>
                         <Box
                             w={"33.33%"}
-                            h={"265px"}
+                            h={"72"}
                             // border={"1px solid black"}
                             textAlign={{ lg: "left", base: "start" }}
                         >
@@ -199,8 +199,8 @@ const Footer = () => {
                         </Box>
                         <Box
                             w={"33.33%"}
-                            // h={"fit-content"}
-                            border={"1px solid black"}
+                            h={"72"}
+                            // border={"1px solid black"}
                             textAlign={"left"}
                         >
                             <Heading
@@ -232,7 +232,7 @@ const Footer = () => {
                         </Box>
                         <Box
                             w={"33.33%"}
-                            h={"263px"}
+                            h={"72"}
                             // border={"1px solid black"}
                             textAlign={"left"}
                         >
