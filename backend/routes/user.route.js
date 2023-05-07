@@ -11,7 +11,6 @@ user.post('/login',async(req,res)=>{
         const user=await UserModel.findOne({email:req.body.email});
         bcrypt.compare(req.body.password,user.password,(err,result)=>{
             if(result){
-                console.log(user._id);
                 const token=jwt.sign({userId:user._id},'UserLogin');
                 res.status(200).send({"success":"login successful","token":token});
             }else{

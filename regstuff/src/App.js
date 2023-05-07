@@ -1,14 +1,14 @@
-import './App.css';
-import {Login} from './Admin/Login';
-import Register from './Admin/Register';
-
+import "./App.css";
+import MainRoute from "./routes/MainRoute";
+import AllRoutes from "./Admin/AdminRoutes/AllRoutes";
 
 function App() {
-  return (
-    <div className="App">
-     
-    </div>
-  );
+    return (
+        <div className="App">
+            <MainRoute />
+            <AllRoutes />
+        </div>
+    );
 }
 
 export default App;

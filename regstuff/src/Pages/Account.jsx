@@ -1,26 +1,25 @@
 import { Box, Divider, Grid, Spinner, Text, VStack } from '@chakra-ui/react'
-import React from 'react'
+import React, { useEffect } from 'react'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faCaretRight} from '@fortawesome/free-solid-svg-icons';
-import { useSelector } from 'react-redux';
-import UserLogin from '../components/Login';
-import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import UserLogin from './Login';
+import { Link, useLocation } from 'react-router-dom';
+import { LogoutNow } from '../redux/UserLoginReducer/Action';
+import Navbar from '../Homepage/Navbar/Navbar';
 
 function Account() {
 
-    const options=['Wishlist','Help Center','Rewards','Login'];
+    const dispatch=useDispatch();
 
-    const loading=useSelector((store)=>{
-        return store.UserLoginReducer.isLoading;
+    const {loading,token,userName}=useSelector((store)=>{
+        return store.UserLoginReducer;
     });
 
-    const token=useSelector((store)=>{
-        return store.UserLoginReducer.token;
-    });
 
-    const userName=useSelector((store)=>{
-        return store.UserLoginReducer.userName;
-    })
+    useEffect(()=>{
+
+    },[token]);
 
   return ( loading ? <Spinner
         thickness='4px'
@@ -30,42 +29,43 @@ function Account() {
         size='xl'
     /> :
     <Box>
+        <Navbar/>
         <Text as={'b'} fontSize={'4xl'}>MY ACCOUNT</Text>
         <Divider/>
-        {token == '' ?  
-        <Grid gridTemplateColumns={'20% 70%'} gap={'5%'} textAlign={'left'}>
+        {token == '' ?
+        <Grid gridTemplateColumns={{base:'1fr',lg:'20% 70%'}} gap={'5%'} textAlign={{base:'center',lg:'left'}}>
             <VStack>
-                <Text as={'b'} fontSize={'xl'}>
+                <Text as={'b'} fontSize={'xl'} px={'20px'} w={'100%'}>
                     GUEST
                 </Text>    
-                <Text cursor={'pointer'} fontSize={'xl'}>Wishlist <FontAwesomeIcon icon={faCaretRight}/></Text>    
-                <Text cursor={'pointer'} fontSize={'xl'}>Help Center <FontAwesomeIcon icon={faCaretRight}/></Text>    
-                <Text cursor={'pointer'} fontSize={'xl'}>Rewards <FontAwesomeIcon icon={faCaretRight}/></Text>  
-                <Link to={'/userLogin'}>
-                <Text cursor={'pointer'} fontSize={'xl'}>Login <FontAwesomeIcon icon={faCaretRight}/></Text>    
-                    </Link>  
+                <Text cursor={'pointer'} fontSize={'xl'} px={'20px'} w={'100%'}>Wishlist <FontAwesomeIcon icon={faCaretRight}/></Text>    
+                <Text cursor={'pointer'} fontSize={'xl'} px={'20px'} w={'100%'}>Help Center <FontAwesomeIcon icon={faCaretRight}/></Text>    
+                <Text cursor={'pointer'} fontSize={'xl'} px={'20px'} w={'100%'}>Rewards <FontAwesomeIcon icon={faCaretRight}/></Text>
+                <Text cursor={'pointer'} fontSize={'xl'} px={'20px'} w={'100%'}><Link to={'/userLogin'}> Login <FontAwesomeIcon icon={faCaretRight}/></Link></Text> 
             </VStack>
             <VStack>
-                <Text>Working</Text>
+                <Text></Text>
             </VStack>
-        </Grid> :
-            <Grid gridTemplateColumns={'20% 70%'} gap={'5%'}>
+        </Grid>  :
+            <Grid gridTemplateColumns={{base:'1fr',lg:'20% 70%'}} gap={'5%'} textAlign={{base:'center',lg:'left'}}>
             <VStack>
-                <Text as={'b'} fontSize={'xl'}>
+                <Text as={'b'} fontSize={'xl'} px={'20px'} w={'100%'}>
                     {userName}
                 </Text>
-                <Text cursor={'pointer'} fontSize={'xl'}>Personal Info <FontAwesomeIcon icon={faCaretRight}/></Text>    
-                <Text cursor={'pointer'} fontSize={'xl'}>My Orders <FontAwesomeIcon icon={faCaretRight}/></Text>    
-                <Text cursor={'pointer'} fontSize={'xl'}>Address Book <FontAwesomeIcon icon={faCaretRight}/></Text>    
-                <Text cursor={'pointer'} fontSize={'xl'}>Contact Us <FontAwesomeIcon icon={faCaretRight}/></Text>    
-                <Text cursor={'pointer'} fontSize={'xl'}>Return/Exchange <FontAwesomeIcon icon={faCaretRight}/></Text>    
-                <Text cursor={'pointer'} fontSize={'xl'}>Wishlist <FontAwesomeIcon icon={faCaretRight}/></Text>    
-                <Text cursor={'pointer'} fontSize={'xl'}>Help Center <FontAwesomeIcon icon={faCaretRight}/></Text>    
-                <Text cursor={'pointer'} fontSize={'xl'}>Rewards <FontAwesomeIcon icon={faCaretRight}/></Text>    
-                <Text cursor={'pointer'} fontSize={'xl'}>Logout <FontAwesomeIcon icon={faCaretRight}/></Text>    
+                <Text cursor={'pointer'} fontSize={'xl'} px={'20px'} w={'100%'}>Personal Info <FontAwesomeIcon icon={faCaretRight}/></Text>    
+                <Text cursor={'pointer'} fontSize={'xl'} px={'20px'} w={'100%'}>My Orders <FontAwesomeIcon icon={faCaretRight}/></Text>    
+                <Text cursor={'pointer'} fontSize={'xl'} px={'20px'} w={'100%'}>Address Book <FontAwesomeIcon icon={faCaretRight}/></Text>    
+                <Text cursor={'pointer'} fontSize={'xl'} px={'20px'} w={'100%'}>Contact Us <FontAwesomeIcon icon={faCaretRight}/></Text>    
+                <Text cursor={'pointer'} fontSize={'xl'} px={'20px'} w={'100%'}>Return/Exchange <FontAwesomeIcon icon={faCaretRight}/></Text>    
+                <Text cursor={'pointer'} fontSize={'xl'} px={'20px'} w={'100%'}>Wishlist <FontAwesomeIcon icon={faCaretRight}/></Text>    
+                <Text cursor={'pointer'} fontSize={'xl'} px={'20px'} w={'100%'}>Help Center <FontAwesomeIcon icon={faCaretRight}/></Text>    
+                <Text cursor={'pointer'} fontSize={'xl'} px={'20px'} w={'100%'}>Rewards <FontAwesomeIcon icon={faCaretRight}/></Text>    
+                <Text cursor={'pointer'} fontSize={'xl'} onClick={()=>{
+                        dispatch(LogoutNow);
+                }} px={'20px'} w={'100%'}>Logout <FontAwesomeIcon icon={faCaretRight}/></Text>    
             </VStack>
             <VStack>
-                <Text>Working</Text>
+                <Text></Text>
             </VStack>
         </Grid> 
         }

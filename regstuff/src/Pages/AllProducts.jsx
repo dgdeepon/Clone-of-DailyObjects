@@ -1,4 +1,5 @@
-import { Flex, Box, Text, Image} from "@chakra-ui/react";
+import { Flex, Box, Text, Image,Button,Spinner,useToast} from "@chakra-ui/react";
+import { useState } from "react";
 
 const AllProducts = ({
 	images,
@@ -7,7 +8,44 @@ const AllProducts = ({
 	price,
 	mrp,_id
 }) => {
+	const toast = useToast()
+	let token=localStorage.getItem("token")
+	const [isLoading, setIsLoading] = useState(false);
+
+	const hadleidcheck=(title)=>{
+		if(token===null){
+			toast({
+				title: "Please login first",
+				description: "",
+				status: "error",
+				duration: 2500,
+				isClosable: true,
+				position: "top",
+			});
+		   }else{
+			   fetch("https://dailyobject-clonebe.onrender.com/data/cart")
+							.then((res) => res.json())
+							.then((res) => {
+								let datacheck = res;
 	
+								const alreadyAdded = datacheck.filter((el) => el.title === title);
+	
+								if (alreadyAdded.length >= 1) {
+									toast({
+										title: "Product Already  Added In Cart",
+										description: "",
+										status: "error",
+										duration: 2500,
+										isClosable: true,
+										position: "top",
+									});
+								} else {
+									mobiles();
+								}
+							})
+							.catch((err) => console.log(err));
+		}
+		 }
 	
 const mobiles=()=>{
 
@@ -36,6 +74,8 @@ const mobiles=()=>{
 					rounded="lg"
 					shadow="lg"
 					position="relative"
+					h={{lg:"573px",md:"400px",sm:"20px"}}
+
 				>
 					
 						<Image
@@ -49,7 +89,7 @@ const mobiles=()=>{
 					
 
 					<Image
-						src={images}
+						src={images[0]}
 						alt={`Pic`}
 						roundedTop="xl"
                         //while clicking
@@ -87,7 +127,31 @@ const mobiles=()=>{
                         <Text color="red" fontSize={{ lg: "md", md: "md", base: "md" }} fontWeight="bold">
                        BUY 1 GET 1 FREE*
                         </Text>
-						
+						<Button
+								bg="#20a87e"
+								color={"white"}
+								w="85%"
+								m="auto"
+								colorScheme="green"
+								onClick={()=>hadleidcheck(title)}
+							>
+								{!isLoading &&
+                                     `ADD TO CART`}
+                                {isLoading && (
+                                    <Spinner
+                                        thickness="2px"
+                                        speed="0.50s"
+                                        emptyColor="gray.200"
+                                        color="black"
+                                        size="md"
+                                    />
+                                )}
+								
+								<Image
+									ml="5%"
+									src="https://images.dailyobjects.com/marche/icons/Bag.png?tr=cm-pad_resize,v-2,w-16,h-16,dpr-1"
+								/>
+							</Button>
 					</Box>
 				</Box>
 			</Flex>

@@ -10,7 +10,6 @@ const ProductCarousel = () => {
         <Box w={{ lg: "76%", base: "100%" }}>
             <Carousel
                 responsive={responsive}
-                removeArrowOnDeviceType={["tablet", "mobile"]}
             >
                 {productData.map((ele) => (
                     <Product key={ele.id} {...ele} />

@@ -1,15 +1,24 @@
-import React from 'react'
-import { Route, Routes } from 'react-router-dom'
-import UserLogin from '../components/Login'
-import Account from '../Pages/Account'
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+import UserLogin from "../Pages/Login";
+import Account from "../Pages/Account";
+import UserRegister from "../Pages/Register";
+import PrivateRoute from "./PrivateRoute";
+import LandingPage from "../Homepage/LandingPage/LandingPage";
+import Products from "../Pages/Products";
+import SingleProductPage from "../Pages/SingleProductPage";
 
 function MainRoute() {
   return (
     <Routes>
-        <Route path='/userLogin' element={<UserLogin/>}/>
-        <Route path='/account' element={<Account/>}/>
+      <Route path="/" element={<LandingPage />} />
+      <Route path="/userLogin" element={<UserLogin />} />
+      <Route path="/userRegister" element={<UserRegister />} />
+      <Route path="'/singleProduct/:id" element={<SingleProductPage/>}/>
+      <Route path="/account" element={<Account />} />
+      <Route path="/products" element={<Products />} />
     </Routes>
-  )
+  );
 }
 
-export default MainRoute
+export default MainRoute;

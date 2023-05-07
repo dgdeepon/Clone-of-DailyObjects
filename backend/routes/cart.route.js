@@ -7,13 +7,31 @@ const cart=exporess.Router();
 // get cart details
 cart.get('/',async(req,res)=>{
     try {
-        const data=await CartModel.find();
+        const data=await CartModel.find({userId:req.body.userId});
         res.status(200).send(data);
     } catch (error) {
         res.status(501).send({"error":"failed to fetch the cartData"});
     }
 });
 
+cart.patch('/cartEdit/:id',async(req,res)=>{
+    try {
+        await CartModel.findByIdAndUpdate({_id:req.params.id},req.body);
+        res.status(200).send({"success":"data is updated"});
+    } catch (error) {
+        res.status(501).send({"error":"failed to update the data"});
+    }
+});
+
+// delete product
+cart.delete('/cartDelete/:id',async(req,res)=>{
+    try {
+        await CartModel.findByIdAndDelete({_id:id});
+        res.status(200).send({"success":"data is deleted"});
+    } catch (error) {
+        res.status(501).send({"error":"failed to delete the data"});
+    }
+})
 
 
 // add to cart
