@@ -141,8 +141,8 @@ const handleimage=async()=>{
     const {name1,name2,name3,name4,name5,name6,details1,details2,details3,details4,details5,details6}=additional
 const {category,brand,price,title,mrp,hex,color}=maindata
 images.push(image1,image2,image3,image4,image5,image6)
-    if(image1&&image2&&image3&&image4&&image5&&image6&&name1&&name2&&name3&&name4&&name5&&name6&&brand&&price&&title&&category&&color&&mrp&&hex&&details1&&details2&&
-        details3&&details4&&details5&&details6){
+    if((image1||image2||image3||image4||image5||image6)&&(name1||name2||name3||name4||name5||name6)&&brand&&price&&title&&category&&color&&mrp&&(details1||details2||
+        details3||details4||details5||details6)){
     try{
         
        
@@ -183,15 +183,15 @@ dispatch(addproduct(finaldata)).then((res)=>{
                 <FormLabel>details</FormLabel>
                 <Input  onChange={detailchange} placeholder="details1" type="text" name="details1" />
               </FormControl>
-              <FormControl required>
+              <FormControl >
                 <FormLabel>details</FormLabel>
                 <Input onChange={detailchange} placeholder="details2" type="text" name="details2" />
               </FormControl>
-              <FormControl required>
+              <FormControl >
                 <FormLabel>details</FormLabel>
                 <Input  onChange={detailchange}placeholder="details3" type="text" name="details3" />
               </FormControl>
-              <FormControl required>
+              <FormControl >
                 <FormLabel>details</FormLabel>
                 <Input  onChange={detailchange}placeholder="details4" type="text" name="details4" />
               </FormControl>
@@ -205,11 +205,11 @@ dispatch(addproduct(finaldata)).then((res)=>{
               
               </Box></Box>
               <Box>
-              <FormControl required>
+              <FormControl >
                 <FormLabel>details</FormLabel>
                 <Input  onChange={detailchange} placeholder="details5" type="text" name="details5" />
               </FormControl>
-              <FormControl required>
+              <FormControl>
                 <FormLabel>details</FormLabel>
                 <Input onChange={detailchange} placeholder="details6" type="text" name="details6" />
               </FormControl>
@@ -217,25 +217,25 @@ dispatch(addproduct(finaldata)).then((res)=>{
                 <FormLabel>names</FormLabel>
                 <Input  onChange={detailchange} placeholder="name1" type="text" name="name1" />
               </FormControl>
-              <FormControl required>
-                <FormLabel>details</FormLabel>
+              <FormControl>
+                <FormLabel>name</FormLabel>
                 <Input  onChange={detailchange}placeholder="name2" type="text" name="name2" />
               </FormControl>
               </Box>
               <Box>
-              <FormControl required>
+              <FormControl >
                 <FormLabel>name</FormLabel>
                 <Input  onChange={detailchange} placeholder="name3" type="text" name="name3" />
               </FormControl>
-              <FormControl required>
+              <FormControl >
                 <FormLabel>name</FormLabel>
                 <Input onChange={detailchange} placeholder="name4" type="text" name="name4" />
               </FormControl>
-              <FormControl required>
+              <FormControl >
                 <FormLabel>name</FormLabel>
                 <Input  onChange={detailchange}placeholder="name5" type="text" name="name5" />
               </FormControl>
-              <FormControl required>
+              <FormControl>
                 <FormLabel>name</FormLabel>
                 <Input  onChange={detailchange}placeholder="name6" type="text" name="name6" />
               </FormControl>
@@ -254,7 +254,7 @@ dispatch(addproduct(finaldata)).then((res)=>{
                 <FormLabel>Color</FormLabel>
                 <Input onChange={handlechange} placeholder="color" type="text" name="color" />
               </FormControl>
-              <FormControl required>
+              <FormControl >
                 <FormLabel>hex(color)</FormLabel>
                 <Input  onChange={handlechange} placeholder="hex" type="text" name="hex" />
               </FormControl>
@@ -280,7 +280,7 @@ dispatch(addproduct(finaldata)).then((res)=>{
                     setImagehandle(false)
                     setImage1(e.target.value)}} placeholder="image1" type="text" name="image1" />
               </FormControl>
-              <FormControl required>
+              <FormControl >
                 <FormLabel>Images</FormLabel>
                 <Input onChange={(e)=>{
                     setImagehandle(false)
@@ -293,25 +293,25 @@ dispatch(addproduct(finaldata)).then((res)=>{
               
               </Box>
               <Box>
-              <FormControl required>
+              <FormControl>
                 <FormLabel>Images</FormLabel>
                 <Input  onChange={(e)=>{
                     setImagehandle(false)
                     setImage3(e.target.value)}} placeholder="image3" type="text" name="image3" />
               </FormControl>
-              <FormControl required>
+              <FormControl >
                 <FormLabel>Images</FormLabel>
                 <Input onChange={(e)=>{
                     setImagehandle(false)
                     setImage4(e.target.value)}} placeholder="image4" type="text" name="image4" />
               </FormControl>
-              <FormControl required>
+              <FormControl >
                 <FormLabel>Images</FormLabel>
                 <Input onChange={(e)=>{
                     setImagehandle(false)
                     setImage5(e.target.value)}} placeholder="image5" type="text" name="image5"/>
               </FormControl>
-              <FormControl required>
+              <FormControl >
                 <FormLabel>Images</FormLabel>
                 <Input  onChange={(e)=>{
                     setImagehandle(false)

@@ -171,8 +171,8 @@ images.push(image1,image2,image3,image4,image5,image6)
     const {name1,name2,name3,name4,name5,name6,details1,details2,details3,details4,details5,details6}=additional
 const {category,brand,price,title,mrp,hex,color}=maindata
 
-    if(image1&&image2&&image3&&image4&&image5&&image6&&name1&&name2&&name3&&name4&&name5&&name6&&brand&&price&&title&&category&&color&&mrp&&hex&&details1&&details2&&
-        details3&&details4&&details5&&details6){
+    if((image1||image2||image3||image4||image5||image6)&&(name1||name2||name3||name4||name5||name6)&&brand&&price&&title&&category&&color&&mrp&&(details1||details2||
+      details3||details4||details5||details6)){
     try{
         
        setAddimage([image1,image2,image3,image4,image5,image6])
@@ -216,15 +216,15 @@ dispatch(editproduct(id,finaldata)).then((res)=>{
                 <FormLabel>details</FormLabel>
                 <Input value={additional.details1}  onChange={detailchange} _placeholder={{color:"white"}} defaultValue={typeof singledata.additional_info !== "undefined"?singledata["additional_info"].details1:""} placeholder="details1" type="text" name="details1" />
               </FormControl>
-              <FormControl required>
+              <FormControl>
                 <FormLabel>details</FormLabel>
                 <Input onChange={detailchange} value={additional.details2}  placeholder="details2" type="text" name="details2" />
               </FormControl>
-              <FormControl required>
+              <FormControl >
                 <FormLabel>details</FormLabel>
                 <Input  onChange={detailchange} value={additional.details3}   placeholder="details3" type="text" name="details3" />
               </FormControl>
-              <FormControl required>
+              <FormControl >
                 <FormLabel>details</FormLabel>
                 <Input  onChange={detailchange} value={additional.details4}  placeholder="details4" type="text" name="details4" />
               </FormControl>
@@ -238,11 +238,11 @@ dispatch(editproduct(id,finaldata)).then((res)=>{
               
               </Box></Box>
               <Box>
-              <FormControl required>
+              <FormControl >
                 <FormLabel>details</FormLabel>
                 <Input  onChange={detailchange} value={additional.details5}  placeholder="details5" type="text" name="details5" />
               </FormControl>
-              <FormControl required>
+              <FormControl >
                 <FormLabel>details</FormLabel>
                 <Input onChange={detailchange}  value={additional.details6} placeholder="details6" type="text" name="details6" />
               </FormControl>
@@ -250,25 +250,25 @@ dispatch(editproduct(id,finaldata)).then((res)=>{
                 <FormLabel>names</FormLabel>
                 <Input  onChange={detailchange}  value={additional.name1} placeholder="name1" type="text" name="name1" />
               </FormControl>
-              <FormControl required>
+              <FormControl>
                 <FormLabel>names</FormLabel>
                 <Input  onChange={detailchange}  value={additional.name2}  placeholder="name2" type="text" name="name2" />
               </FormControl>
               </Box>
               <Box>
-              <FormControl required>
+              <FormControl >
                 <FormLabel>name</FormLabel>
                 <Input  onChange={detailchange}  value={additional.name3} placeholder="name3" type="text" name="name3" />
               </FormControl>
-              <FormControl required>
+              <FormControl >
                 <FormLabel>name</FormLabel>
                 <Input onChange={detailchange}  value={additional.name4} placeholder="name4" type="text" name="name4" />
               </FormControl>
-              <FormControl required>
+              <FormControl >
                 <FormLabel>name</FormLabel>
                 <Input  onChange={detailchange}  value={additional.name5} placeholder="name5" type="text" name="name5" />
               </FormControl>
-              <FormControl required>
+              <FormControl >
                 <FormLabel>name</FormLabel>
                 <Input  onChange={detailchange}  value={additional.name6} placeholder="name6" type="text" name="name6" />
               </FormControl>
@@ -287,13 +287,13 @@ dispatch(editproduct(id,finaldata)).then((res)=>{
                 <FormLabel>Color</FormLabel>
                 <Input onChange={handlechange} value={maindata.color} placeholder="color" type="text" name="color" />
               </FormControl>
-              <FormControl required>
+              <FormControl >
                 <FormLabel>hex(color)</FormLabel>
                 <Input  onChange={handlechange} value={maindata.hex} placeholder="hex" type="text" name="hex" />
               </FormControl>
               <FormControl required>
                 <FormLabel>MRP</FormLabel>
-                <Input  onChange={handlechange} value={maindata.mrp} placeholder="MRP" type="text" name="mrp" />
+                <Input  onChange={handlechange} value={maindata.mrp} placeholder="MRP" type="number" name="mrp" />
               </FormControl>
              
               
@@ -301,7 +301,7 @@ dispatch(editproduct(id,finaldata)).then((res)=>{
               <Box>
               <FormControl required>
                 <FormLabel>PRICE</FormLabel>
-                <Input  onChange={handlechange} placeholder="price" value={maindata.price} type="text" name="price" />
+                <Input  onChange={handlechange} placeholder="price" value={maindata.price} type="number" name="price" />
               </FormControl>
               <FormControl required>
                 <FormLabel>Title</FormLabel>
@@ -313,7 +313,7 @@ dispatch(editproduct(id,finaldata)).then((res)=>{
                     setImagehandle(false)
                     setImage1(e.target.value)}} value={image1} placeholder="image1" type="text" name="image1" />
               </FormControl>
-              <FormControl required>
+              <FormControl >
                 <FormLabel>Images</FormLabel>
                 <Input onChange={(e)=>{
                     setImagehandle(false)
@@ -326,25 +326,25 @@ dispatch(editproduct(id,finaldata)).then((res)=>{
               
               </Box>
               <Box>
-              <FormControl required>
+              <FormControl >
                 <FormLabel>Images</FormLabel>
                 <Input  onChange={(e)=>{
                     setImagehandle(false)
                     setImage3(e.target.value)}} placeholder="image3" value={image3} type="text" name="image3" />
               </FormControl>
-              <FormControl required>
+              <FormControl>
                 <FormLabel>Images</FormLabel>
                 <Input onChange={(e)=>{
                     setImagehandle(false)
                     setImage4(e.target.value)}} placeholder="image4" value={image4} type="text" name="image4" />
               </FormControl>
-              <FormControl required>
+              <FormControl >
                 <FormLabel>Images</FormLabel>
                 <Input onChange={(e)=>{
                     setImagehandle(false)
                     setImage5(e.target.value)}} placeholder="image5" type="text" value={image5} name="image5"/>
               </FormControl>
-              <FormControl required>
+              <FormControl >
                 <FormLabel>Images</FormLabel>
                 <Input  onChange={(e)=>{
                     setImagehandle(false)
