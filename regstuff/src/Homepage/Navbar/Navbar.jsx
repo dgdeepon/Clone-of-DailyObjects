@@ -130,7 +130,7 @@ export default function Navbar() {
                         fontSize={"sm"}
                         fontWeight={400}
                         variant={"link"}
-                        href={"#"}
+                        href={"/Account"}
                     >
                         <IoPersonOutline size={20} color="black" />
                     </Button>
@@ -483,7 +483,7 @@ const DesktopNavContentItem = [
         img: "https://images.dailyobjects.com/marche/assets/images/other/phone-cases-s.png?tr=cm-pad_resize,v-2,dpr-1",
         category: "PHONE CASE",
         brand: ["Apple", "Oneplus", "Samsung", "Xiaomi"],
-        href: "https://www.apple.com/",
+        href: "/products",
     },
     {
         img: "https://images.dailyobjects.com/marche/assets/images/other/laptop-sleeves-and-bags-s.png?tr=cm-pad_resize,v-2,dpr-1",
