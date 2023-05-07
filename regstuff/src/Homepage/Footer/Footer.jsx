@@ -170,10 +170,11 @@ const Footer = () => {
                 {/* Left section */}
                 <Box
                     w={{ lg: "70%", base: "90%" }}
-                    // h={{ lg: "265px " }}
+                    // h={"72"}
                     display={"flex"}
                     alignItems={"center"}
                     marginLeft={"25px"}
+                    // border={"1px solid black"}
                 >
                     <HStack w={"100%"}>
                         <Box
@@ -223,12 +224,6 @@ const Footer = () => {
                             <Text fontSize={"13px"} paddingBottom={"15px"}>
                                 Cancellation Policy
                             </Text>
-                            <Text fontSize={"13px"} paddingBottom={"15px"}>
-                                Return and exchange Policy
-                            </Text>
-                            <Text fontSize={"13px"} paddingBottom={"15px"}>
-                                Privacy and Security Policy
-                            </Text>
                         </Box>
                         <Box
                             w={"33.33%"}
@@ -259,12 +254,13 @@ const Footer = () => {
                     w={{ lg: "28%", base: "100%" }}
                     display={"flex"}
                     flexDirection={{ lg: "column", base: "row" }}
+                    justifyContent={"space-evenly"}
                 >
                     <Box
                         padding={"47px 30px 47px 34px"}
                         border={"1px solid lightgrey"}
                         borderRight={"none"}
-                        borderTop={"none"}
+                        borderTop={{ lg: "none", base: "1px solid ligthgrey" }}
                     >
                         <Stack spacing={3}>
                             <Heading
@@ -337,7 +333,7 @@ const Footer = () => {
                         padding={"47px 30px 47px 34px"}
                         border={"1px solid lightgrey"}
                         borderRight={"none"}
-                        borderTop={"none"}
+                        borderTop={{ lg: "none", base: "1px solid ligthgrey" }}
                         borderBottom={"none"}
                     >
                         <Stack spacing={3}>
