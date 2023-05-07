@@ -145,7 +145,7 @@ const LandingPage = () => {
 
             <Box h={{ lg: 14, base: 8 }}></Box>
 
-            <Box w={{ lg: "95%" }} margin={"auto"}>
+            <Box w={"95%"} margin={"auto"}>
                 <Heading
                     fontSize={{ lg: "26px", base: "md" }}
                     fontWeight={"700"}
@@ -260,7 +260,7 @@ const LandingPage = () => {
 
             <Box h={{ lg: 14, base: 8 }}></Box>
 
-            <Box w={{ lg: "95%" }} margin={"auto"}>
+            <Box w={"95%"} margin={"auto"}>
                 <Heading
                     fontSize={{ lg: "26px", base: "md" }}
                     fontWeight={"700"}
@@ -381,7 +381,7 @@ const LandingPage = () => {
                     <Stack spacing={3} mb={{ base: "15px" }}>
                         <Box>
                             <Heading
-                                fontSize={"50px"}
+                                fontSize={{lg:"50px",md:"40px", base:"35px"}}
                                 fontWeight={"600"}
                                 fontFamily={"Fira Sans Extra Condensed"}
                             >
