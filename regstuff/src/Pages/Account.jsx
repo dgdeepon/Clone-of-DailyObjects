@@ -40,10 +40,8 @@ function Account() {
                 </Text>    
                 <Text cursor={'pointer'} fontSize={'xl'} px={'20px'} w={'100%'}>Wishlist <FontAwesomeIcon icon={faCaretRight}/></Text>    
                 <Text cursor={'pointer'} fontSize={'xl'} px={'20px'} w={'100%'}>Help Center <FontAwesomeIcon icon={faCaretRight}/></Text>    
-                <Text cursor={'pointer'} fontSize={'xl'} px={'20px'} w={'100%'}>Rewards <FontAwesomeIcon icon={faCaretRight}/></Text>  
-                <Link to={'/userLogin'}>
-                <Text cursor={'pointer'} fontSize={'xl'} px={'20px'} w={'100%'}>Login <FontAwesomeIcon icon={faCaretRight}/></Text>    
-                    </Link>  
+                <Text cursor={'pointer'} fontSize={'xl'} px={'20px'} w={'100%'}>Rewards <FontAwesomeIcon icon={faCaretRight}/></Text>
+                <Text cursor={'pointer'} fontSize={'xl'} px={'20px'} w={'100%'}><Link to={'/userLogin'}> Login <FontAwesomeIcon icon={faCaretRight}/></Link></Text> 
             </VStack>
             <VStack>
                 <Text></Text>
