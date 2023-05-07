@@ -5,6 +5,8 @@ import { LoginNow } from '../redux/UserLoginReducer/Action';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import backgroundImage from '../images/bookcase-g87bd5630f_1920.jpg'
 import logo from '../images/RS-removebg-preview.png';
+import Navbar from '../Homepage/Navbar/Navbar';
+import Footer from '../Homepage/Footer/Footer';
 
 function UserLogin() {
     const toast=useToast();
@@ -38,8 +40,10 @@ function UserLogin() {
     }
 
   return (
+    <>
+    <Navbar/>
     <VStack h={'100vh'} p={'20px'} backdropFilter={'auto'} backdropBlur={'2px'}>
-        <VStack mt={'10%'} backdropFilter={'auto'} backdropBlur={'2px'}>
+        <VStack mt={'5%'} backdropFilter={'auto'} backdropBlur={'2px'}>
             <Link to={'/'}>
             <Image src={logo}/>
             </Link>
@@ -57,6 +61,7 @@ function UserLogin() {
         </Link>
         </VStack>
     </VStack>
+            </>
   )
 }
 
