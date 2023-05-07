@@ -25,7 +25,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Link } from 'react-router-dom';
 import { deletedata } from '../../../redux/AdminReducer/DeleteReducer/Action';
-import { useToast } from '@chakra-ui/react';
+import { useToast,Button } from '@chakra-ui/react';
 export default function ProductTable(){
     const dispatch=useDispatch()
     const data=useSelector((state)=>state.allproductreducer)
@@ -75,7 +75,7 @@ dispatch(allproduct)
          <Th >Rs.{el.price}</Th>
          <Th >{el.brand.length>5&&el.brand.substring(0,20)}..</Th>
          <Th ><Link to={`/admin/dashboard/edit/${el._id}`}><EditIcon  /></Link></Th>
-         <Th ><DeleteIcon onClick={()=>handledelete(el._id)}/></Th>
+         <Th ><Button><DeleteIcon onClick={()=>handledelete(el._id)}/></Button></Th>
        </Tr>  
        )}
     

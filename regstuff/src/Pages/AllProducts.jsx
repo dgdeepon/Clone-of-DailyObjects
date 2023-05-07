@@ -1,4 +1,5 @@
 import { Flex, Box, Text, Image,Button,Spinner,useToast} from "@chakra-ui/react";
+import axios from "axios";
 import { useState } from "react";
 
 const AllProducts = ({
@@ -8,11 +9,14 @@ const AllProducts = ({
 	price,
 	mrp,_id
 }) => {
+
 	const toast = useToast()
 	let token=localStorage.getItem("token")
+	// console.log(token)
 	const [isLoading, setIsLoading] = useState(false);
 
-	const hadleidcheck=(title)=>{
+	const hadleidcheck=(title,images,price)=>{
+	
 		if(token===null){
 			toast({
 				title: "Please login first",
@@ -23,10 +27,13 @@ const AllProducts = ({
 				position: "top",
 			});
 		   }else{
-			   fetch("https://dailyobject-clonebe.onrender.com/data/cart")
-							.then((res) => res.json())
-							.then((res) => {
-								let datacheck = res;
+			   axios.get("https://dailyobject-clonebe.onrender.com/cartData",{
+				headers: {
+					Authorization: `Bearer ${token}`
+				  }
+				}).then((res) => {
+								
+								let datacheck = res.data;
 	
 								const alreadyAdded = datacheck.filter((el) => el.title === title);
 	
@@ -40,26 +47,33 @@ const AllProducts = ({
 										position: "top",
 									});
 								} else {
-									mobiles();
+									mobiles(title,images,price);
 								}
 							})
 							.catch((err) => console.log(err));
 		}
 		 }
 	
-const mobiles=()=>{
-
+const mobiles=(title,images,price)=>{
+// console.log(images[0],price,title)
+// price=+(price)
 		let payload={
-			images: images,
-			title: title,
-			brand: brand,
-			price: price
+			"title":title,
+		
+			"price":Number(price),
+			"image":images[0],
+			"quantity":1
+
 		}
-		fetch("https://dailyobject-clonebe.onrender.com/data/add", {
-			method: "POST",
-			body: JSON.stringify(payload),
-		})
-			.then((res) => res.json())
+		
+		// const {title,price,image,quantity}=payload
+		// console.log(title,price,image,quantity)
+		// console.log(typeof price)
+		axios.post("https://dailyobject-clonebe.onrender.com/cartData/addToCart",{"title":title,price:Number(price),image:images[0],quantity:1}, {
+			headers: {
+				Authorization: `Bearer ${token}`
+			  }
+			}).then((res) =>toast({description:"Product is added to cart",position:"top"}))
 	 }
 	return (
 		<>
@@ -133,7 +147,7 @@ const mobiles=()=>{
 								w="85%"
 								m="auto"
 								colorScheme="green"
-								onClick={()=>hadleidcheck(title)}
+								onClick={()=>hadleidcheck(title,images,price)}
 							>
 								{!isLoading &&
                                      `ADD TO CART`}

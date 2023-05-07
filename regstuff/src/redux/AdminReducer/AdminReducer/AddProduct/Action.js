@@ -13,7 +13,7 @@ export const addproductfailure=()=>{
 
 export const addproduct=(obj)=>(dispatch)=>{
     dispatch(addproductrequest())
-const token=JSON.parse(localStorage.getItem("token"))
+const token=localStorage.getItem("admintoken")
 
 
 
