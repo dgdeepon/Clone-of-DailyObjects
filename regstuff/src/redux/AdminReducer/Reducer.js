@@ -3,7 +3,7 @@ import { adminlogreq, adminlogsucc } from "./ActionType"
 const initialstate={
     isLoading:false,
     isError:false,
-    auth:JSON.parse(localStorage.getItem("token"))||"",
+    auth:localStorage.getItem("token")||"",
     msg:""
 }
 
