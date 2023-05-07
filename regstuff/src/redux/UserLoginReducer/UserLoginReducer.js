@@ -1,4 +1,4 @@
-import { LOGIN_FAILED, LOGIN_REQ, LOGIN_SUCC } from "./ActionType";
+import { LOGIN_FAILED, LOGIN_REQ, LOGIN_SUCC, LOGOUT_NOW, REGISTER_REQ } from "./ActionType";
 
 
 
@@ -6,7 +6,7 @@ const init={
     token:'',
     userName:'',
     isLoading:false,
-    isError:false
+    isError:false,
 };
 
 export default function UserLoginReducer(state=init,action){
@@ -15,13 +15,15 @@ export default function UserLoginReducer(state=init,action){
             return{
                 ...state,
                 token:'',
+                userName:'',
                 isLoading:true,
                 isError:false
             }
         case LOGIN_SUCC:
             return{
                 ...state,
-                token:action.paylaod,
+                token:action.payload.token,
+                userName:action.payload.name,
                 isLoading:false,
                 isError:false
             }    
@@ -29,9 +31,20 @@ export default function UserLoginReducer(state=init,action){
             return{
                 ...state,
                 token:'',
+                userName:'',
                 isLoading:false,
                 isError:true
             }    
+        case LOGOUT_NOW:
+            return {
+                ...state,
+                token:'',
+                userName:'',
+               isLoading:false,
+                isError:false
+            }
+        case REGISTER_REQ:
+            return state;       
         default:
             return state;
     }
