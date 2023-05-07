@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import UserLogin from './Login';
 import { Link, useLocation } from 'react-router-dom';
 import { LogoutNow } from '../redux/UserLoginReducer/Action';
+import Navbar from '../Homepage/Navbar/Navbar';
 
 function Account() {
 
@@ -28,9 +29,10 @@ function Account() {
         size='xl'
     /> :
     <Box>
+        <Navbar/>
         <Text as={'b'} fontSize={'4xl'}>MY ACCOUNT</Text>
         <Divider/>
-        {token == '' ?  
+        {token == '' ?
         <Grid gridTemplateColumns={{base:'1fr',lg:'20% 70%'}} gap={'5%'} textAlign={{base:'center',lg:'left'}}>
             <VStack>
                 <Text as={'b'} fontSize={'xl'} px={'20px'} w={'100%'}>
@@ -46,7 +48,7 @@ function Account() {
             <VStack>
                 <Text></Text>
             </VStack>
-        </Grid> :
+        </Grid>  :
             <Grid gridTemplateColumns={{base:'1fr',lg:'20% 70%'}} gap={'5%'} textAlign={{base:'center',lg:'left'}}>
             <VStack>
                 <Text as={'b'} fontSize={'xl'} px={'20px'} w={'100%'}>
