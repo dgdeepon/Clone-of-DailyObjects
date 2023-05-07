@@ -1,26 +1,24 @@
 import { Box, Divider, Grid, Spinner, Text, VStack } from '@chakra-ui/react'
-import React from 'react'
+import React, { useEffect } from 'react'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faCaretRight} from '@fortawesome/free-solid-svg-icons';
-import { useSelector } from 'react-redux';
-import UserLogin from '../components/Login';
-import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import UserLogin from './Login';
+import { Link, useLocation } from 'react-router-dom';
+import { LogoutNow } from '../redux/UserLoginReducer/Action';
 
 function Account() {
 
-    const options=['Wishlist','Help Center','Rewards','Login'];
+    const dispatch=useDispatch();
 
-    const loading=useSelector((store)=>{
-        return store.UserLoginReducer.isLoading;
+    const {loading,token,userName}=useSelector((store)=>{
+        return store.UserLoginReducer;
     });
 
-    const token=useSelector((store)=>{
-        return store.UserLoginReducer.token;
-    });
 
-    const userName=useSelector((store)=>{
-        return store.UserLoginReducer.userName;
-    })
+    useEffect(()=>{
+
+    },[token]);
 
   return ( loading ? <Spinner
         thickness='4px'
@@ -46,11 +44,11 @@ function Account() {
                     </Link>  
             </VStack>
             <VStack>
-                <Text>Working</Text>
+                <Text></Text>
             </VStack>
         </Grid> :
             <Grid gridTemplateColumns={'20% 70%'} gap={'5%'}>
-            <VStack>
+            <VStack textAlign={'left'}>
                 <Text as={'b'} fontSize={'xl'}>
                     {userName}
                 </Text>
@@ -62,10 +60,12 @@ function Account() {
                 <Text cursor={'pointer'} fontSize={'xl'}>Wishlist <FontAwesomeIcon icon={faCaretRight}/></Text>    
                 <Text cursor={'pointer'} fontSize={'xl'}>Help Center <FontAwesomeIcon icon={faCaretRight}/></Text>    
                 <Text cursor={'pointer'} fontSize={'xl'}>Rewards <FontAwesomeIcon icon={faCaretRight}/></Text>    
-                <Text cursor={'pointer'} fontSize={'xl'}>Logout <FontAwesomeIcon icon={faCaretRight}/></Text>    
+                <Text cursor={'pointer'} fontSize={'xl'} onClick={()=>{
+                        dispatch(LogoutNow);
+                }} >Logout <FontAwesomeIcon icon={faCaretRight}/></Text>    
             </VStack>
             <VStack>
-                <Text>Working</Text>
+                <Text></Text>
             </VStack>
         </Grid> 
         }
