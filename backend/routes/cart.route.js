@@ -7,7 +7,7 @@ const cart=exporess.Router();
 // get cart details
 cart.get('/',async(req,res)=>{
     try {
-        const data=await CartModel.find();
+        const data=await CartModel.find({userId:req.body.userId});
         res.status(200).send(data);
     } catch (error) {
         res.status(501).send({"error":"failed to fetch the cartData"});
