@@ -17,6 +17,7 @@ function MainRoute() {
       <Route path="'/singleProduct/:id" element={<SingleProductPage/>}/>
       <Route path="/account" element={<Account />} />
       <Route path="/products" element={<Products />} />
+      <Route path="/productdetails/:id" element={<SingleProductPage/>}/>
     </Routes>
   );
 }
