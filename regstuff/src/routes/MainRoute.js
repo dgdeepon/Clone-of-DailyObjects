@@ -8,6 +8,7 @@ import LandingPage from "../Homepage/LandingPage/LandingPage";
 import Products from "../Pages/Products";
 import SingleProductPage from "../Pages/SingleProductPage";
 import CartPage from "../Pages/CartPage";
+import CheckoutPage from "../Pages/CheckoutPage";
 
 function MainRoute() {
   return (
