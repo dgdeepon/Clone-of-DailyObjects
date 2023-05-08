@@ -14,7 +14,7 @@ export const userdatafailure=()=>{
 
 export const userdata=(dispatch)=>{
     dispatch(userdatarequest())
-    const token=JSON.parse(localStorage.getItem("token"))
+    const token=localStorage.getItem("admintoken")
 
     axios.get("https://dailyobject-clonebe.onrender.com/admin/userlist",{headers: {
         Authorization: `Bearer ${token}`

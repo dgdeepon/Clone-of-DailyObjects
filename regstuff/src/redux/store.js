@@ -10,9 +10,10 @@ import {reducer as singleproductreducer} from "./AdminReducer/SingleProductReduc
 import {reducer as addproductreducer} from "./AdminReducer/AdminReducer/AddProduct/Reducer"
 import {reducer as ordersdatareducer} from "./AdminReducer/CartReducer/Reducer"
 import {reducer as editproductreducer} from "./AdminReducer/EditProductReducer/Reducer"
+import {reducer as usercartreducer} from "./AllCartproductuserside/Reducer"
 import UserLoginReducer from './UserLoginReducer/UserLoginReducer';
 
-const mainReducer=combineReducers({adminreducer,adminregister,UserLoginReducer,userreducer,allproductreducer,admindatareducer,deletereducer,singleproductreducer,addproductreducer,ordersdatareducer,editproductreducer
+const mainReducer=combineReducers({adminreducer,adminregister,UserLoginReducer,userreducer,allproductreducer,admindatareducer,deletereducer,singleproductreducer,addproductreducer,ordersdatareducer,editproductreducer,usercartreducer
 
 });
 

@@ -1,4 +1,8 @@
-import { Flex, Box, Text, Image} from "@chakra-ui/react";
+import { Flex, Box, Text, Image,Button,Spinner,useToast} from "@chakra-ui/react";
+import axios from "axios";
+import { useState} from "react";
+import {useNavigate} from "react-router-dom"
+// import HoverImage from "react-hover-image"
 
 const AllProducts = ({
 	images,
@@ -7,22 +11,73 @@ const AllProducts = ({
 	price,
 	mrp,_id
 }) => {
-	
-	
-const mobiles=()=>{
 
-		let payload={
-			images: images,
-			title: title,
-			brand: brand,
-			price: price
+	const toast = useToast()
+	let token=localStorage.getItem("token")
+	// console.log(token)
+	const [isLoading, setIsLoading] = useState(false);
+const navigate=useNavigate()
+	const hadleidcheck=(title,images,price)=>{
+	
+		if(token===null){
+			toast({
+				title: "Please login first",
+				description: "",
+				status: "error",
+				duration: 2500,
+				isClosable: true,
+				position: "top",
+			});
+		   }else{
+			   axios.get("https://dailyobject-clonebe.onrender.com/cartData",{
+				headers: {
+					Authorization: `Bearer ${token}`
+				  }
+				}).then((res) => {
+								
+								let datacheck = res.data;
+	
+								const alreadyAdded = datacheck.filter((el) => el.title === title);
+	
+								if (alreadyAdded.length >= 1) {
+									toast({
+										title: "Product Already  Added In Cart",
+										description: "",
+										status: "error",
+										duration: 2500,
+										isClosable: true,
+										position: "top",
+									});
+								} else {
+									mobiles(title,images,price);
+								}
+							})
+							.catch((err) => console.log(err));
 		}
-		fetch("https://dailyobject-clonebe.onrender.com/data/add", {
-			method: "POST",
-			body: JSON.stringify(payload),
-		})
-			.then((res) => res.json())
+		 }
+	
+const mobiles=(title,images,price)=>{
+// console.log(images[0],price,title)
+// price=+(price)
+		let payload={
+			"title":title,
+		
+			"price":Number(price),
+			"image":images[0],
+			"quantity":1
+
+		}
+		
+		// const {title,price,image,quantity}=payload
+		// console.log(title,price,image,quantity)
+		// console.log(typeof price)
+		axios.post("https://dailyobject-clonebe.onrender.com/cartData/addToCart",{"title":title,price:Number(price),image:images[0],quantity:1}, {
+			headers: {
+				Authorization: `Bearer ${token}`
+			  }
+			}).then((res) =>toast({description:"Product is added to cart",position:"top"}))
 	 }
+	 
 	return (
 		<>
 	
@@ -36,7 +91,11 @@ const mobiles=()=>{
 					rounded="lg"
 					shadow="lg"
 					position="relative"
-				>
+					// boxSize="300px"
+					// height="550px"
+					// h={{lg:"573px",md:"400px",sm:"20px"}}
+					
+					>
 					
 						<Image
 							src="https://icon-library.com/images/wishlist-icon/wishlist-icon-19.jpg"
@@ -49,11 +108,18 @@ const mobiles=()=>{
 					
 
 					<Image
-						src={images}
+						src={images[0]}
+						hoverSrc={images[2]}
 						alt={`Pic`}
 						roundedTop="xl"
+						boxSize="300px"
+						objectFit={"contain"}
+						w="100%"
+						_hover={{transform:"scale(1.15)",}}
+						transition={"0.2s ease-in-out"}
+						
                         //while clicking
-						// onClick={() => navigate(`/productdetails/${_id}`)}
+						onClick={() => navigate(`/productdetails/${_id}`)}
 					/>
 
 					<Box backgroundColor={"white"} p="6">
@@ -87,7 +153,31 @@ const mobiles=()=>{
                         <Text color="red" fontSize={{ lg: "md", md: "md", base: "md" }} fontWeight="bold">
                        BUY 1 GET 1 FREE*
                         </Text>
-						
+						<Button
+								bg="#20a87e"
+								color={"white"}
+								w="85%"
+								m="auto"
+								colorScheme="green"
+								onClick={()=>hadleidcheck(title,images,price)}
+							>
+								{!isLoading &&
+                                     `ADD TO CART`}
+                                {isLoading && (
+                                    <Spinner
+                                        thickness="2px"
+                                        speed="0.50s"
+                                        emptyColor="gray.200"
+                                        color="black"
+                                        size="md"
+                                    />
+                                )}
+								
+								<Image
+									ml="5%"
+									src="https://images.dailyobjects.com/marche/icons/Bag.png?tr=cm-pad_resize,v-2,w-16,h-16,dpr-1"
+								/>
+							</Button>
 					</Box>
 				</Box>
 			</Flex>

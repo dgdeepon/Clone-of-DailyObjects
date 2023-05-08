@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import logo from '../images/RS-removebg-preview.png';
 import { RegisterNow } from '../redux/UserLoginReducer/Action';
+import Navbar from '../Homepage/Navbar/Navbar';
 
 function UserRegister() {
     const toast=useToast();
@@ -15,11 +16,12 @@ function UserRegister() {
     const {token,isLoading,isError}=useSelector((store)=>{
         return store.UserLoginReducer;
     });
+    const token2=localStorage.getItem('token');
     const dispatch=useDispatch();
     const navi=useNavigate();
 
     useEffect(()=>{
-        if(token!==''){
+        if(token!=='' || token2){
             return navi('/Account');
         }
     },[])
@@ -41,7 +43,9 @@ function UserRegister() {
     }
 
   return (
-    <VStack mt={'10%'} p={'20px'}>
+    <>
+    <Navbar/>
+    <VStack mt={'5%'} p={'20px'}>
         <Link to={'/'}>
         <Image src={logo}/>
         </Link>
@@ -61,6 +65,7 @@ function UserRegister() {
         <Text as={'b'} mt={'10px'}><u>Login</u></Text>
         </Link>
     </VStack>
+    </>
   )
 }
 

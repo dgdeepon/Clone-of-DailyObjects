@@ -15,8 +15,13 @@ data.get('/:id',async(req,res)=>{
 
 data.get('/',async(req,res)=>{
     try {
-        const data=await ProductsModel.find();
-        res.status(200).send(data);
+        if(req.query.brand){
+            const data=await ProductsModel.find({brand:req.query.brand});
+            res.status(200).send(data);
+        }else{
+            const data=await ProductsModel.find();
+            res.status(200).send(data);
+        }
     } catch (error) {
         res.status(501).send({"failed":"failed to get products data"});
     }

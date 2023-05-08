@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import UserLogin from './Login';
 import { Link, useLocation } from 'react-router-dom';
 import { LogoutNow } from '../redux/UserLoginReducer/Action';
+import Navbar from '../Homepage/Navbar/Navbar';
 
 function Account() {
 
@@ -28,9 +29,10 @@ function Account() {
         size='xl'
     /> :
     <Box>
+        <Navbar/>
         <Text as={'b'} fontSize={'4xl'}>MY ACCOUNT</Text>
         <Divider/>
-        {token == '' ?  
+        {token == '' ?
         <Grid gridTemplateColumns={{base:'1fr',lg:'20% 70%'}} gap={'5%'} textAlign={{base:'center',lg:'left'}}>
             <VStack>
                 <Text as={'b'} fontSize={'xl'} px={'20px'} w={'100%'}>
@@ -38,15 +40,13 @@ function Account() {
                 </Text>    
                 <Text cursor={'pointer'} fontSize={'xl'} px={'20px'} w={'100%'}>Wishlist <FontAwesomeIcon icon={faCaretRight}/></Text>    
                 <Text cursor={'pointer'} fontSize={'xl'} px={'20px'} w={'100%'}>Help Center <FontAwesomeIcon icon={faCaretRight}/></Text>    
-                <Text cursor={'pointer'} fontSize={'xl'} px={'20px'} w={'100%'}>Rewards <FontAwesomeIcon icon={faCaretRight}/></Text>  
-                <Link to={'/userLogin'}>
-                <Text cursor={'pointer'} fontSize={'xl'} px={'20px'} w={'100%'}>Login <FontAwesomeIcon icon={faCaretRight}/></Text>    
-                    </Link>  
+                <Text cursor={'pointer'} fontSize={'xl'} px={'20px'} w={'100%'}>Rewards <FontAwesomeIcon icon={faCaretRight}/></Text>
+                <Text cursor={'pointer'} fontSize={'xl'} px={'20px'} w={'100%'}><Link to={'/userLogin'}> Login <FontAwesomeIcon icon={faCaretRight}/></Link></Text> 
             </VStack>
             <VStack>
                 <Text></Text>
             </VStack>
-        </Grid> :
+        </Grid>  :
             <Grid gridTemplateColumns={{base:'1fr',lg:'20% 70%'}} gap={'5%'} textAlign={{base:'center',lg:'left'}}>
             <VStack>
                 <Text as={'b'} fontSize={'xl'} px={'20px'} w={'100%'}>
@@ -62,6 +62,7 @@ function Account() {
                 <Text cursor={'pointer'} fontSize={'xl'} px={'20px'} w={'100%'}>Rewards <FontAwesomeIcon icon={faCaretRight}/></Text>    
                 <Text cursor={'pointer'} fontSize={'xl'} onClick={()=>{
                         dispatch(LogoutNow);
+                        localStorage.removeItem('token');
                 }} px={'20px'} w={'100%'}>Logout <FontAwesomeIcon icon={faCaretRight}/></Text>    
             </VStack>
             <VStack>
