@@ -13,7 +13,7 @@ export const editproductfailure=()=>{
 export const editproduct=(id,obj)=>(dispatch)=>{
     // console.log(id,obj)
     dispatch(editproductrequest())
-    const token=JSON.parse(localStorage.getItem("token"))
+    const token=localStorage.getItem("admintoken")
     return axios.patch(`https://dailyobject-clonebe.onrender.com/admin/edit/${id}`,obj,{
         headers: {
             Authorization: `Bearer ${token}`

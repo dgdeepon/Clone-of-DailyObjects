@@ -13,7 +13,7 @@ export const adminregisterfailed=()=>{
 
 export const adminregister=(obj)=>(dispatch)=>{
     dispatch(adminregistersuccess())
-const token=JSON.parse(localStorage.getItem("token"))
+const token=localStorage.getItem("admintoken")
 
 
 

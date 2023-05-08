@@ -47,10 +47,10 @@ dispatch(alladmindata)
         {admindata.map((el,index)=>
          <Tr>
 
-         <Th>{index+1}</Th>
-         <Th>{el.name}</Th>
-         <Th >{el.email.length>10&&el.email.substring(0,20)}...</Th>
-         <Th >{el.department}</Th>
+         <Th fontFamily={"sans-serif"} color={"#061b64"} fontWeight="bold" textAlign="center" fontSize={"16px"}>{index+1}</Th>
+         <Th fontFamily={"sans-serif"} color={"#061b64"} fontWeight="bold" textAlign="center" fontSize={"16px"}>{el.name}</Th>
+         <Th fontFamily={"sans-serif"} color={"#061b64"} fontWeight="bold" textAlign="center" fontSize={"16px"}>{el.email.length>10&&el.email.substring(0,20)}...</Th>
+         <Th fontFamily={"sans-serif"} color={"#061b64"} fontWeight="bold" textAlign="center" fontSize={"16px"}>{el.department}</Th>
        </Tr>  
         )}
    

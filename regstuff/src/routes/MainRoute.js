@@ -7,7 +7,7 @@ import PrivateRoute from "./PrivateRoute";
 import LandingPage from "../Homepage/LandingPage/LandingPage";
 import Products from "../Pages/Products";
 import SingleProductPage from "../Pages/SingleProductPage";
-import CheckoutPage from "../Pages/CheckoutPage";
+import CartPage from "../Pages/CartPage";
 
 function MainRoute() {
   return (
@@ -15,10 +15,11 @@ function MainRoute() {
       <Route path="/" element={<LandingPage />} />
       <Route path="/userLogin" element={<UserLogin />} />
       <Route path="/userRegister" element={<UserRegister />} />
-      <Route path="'/singleProduct/:id" element={<SingleProductPage/>}/>
       <Route path="/account" element={<Account />} />
       <Route path="/products" element={<Products />} />
       <Route path="/checkout" element={<PrivateRoute><CheckoutPage/></PrivateRoute>} />
+      <Route path="/productdetails/:id" element={<SingleProductPage/>}/>
+      <Route path="/cart" element={<CartPage/>}/>
     </Routes>
   );
 }
