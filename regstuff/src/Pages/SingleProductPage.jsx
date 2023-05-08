@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from "./Single.module.css"
 import { Center, Box   } from '@chakra-ui/react'
 import { Flex, Spacer } from '@chakra-ui/react';
@@ -6,6 +6,8 @@ import { ArrowForwardIcon  } from '@chakra-ui/icons';
 import { Text } from '@chakra-ui/react';
 import { Square } from '@chakra-ui/react';
 import SingleProductPageCarousel from "./SingleProductPageCarousel";
+import { useParams } from 'react-router-dom';
+import { useEffect } from 'react';
 // import { useState, useEffect } from 'react';
 
 const initState=
@@ -43,20 +45,21 @@ const initState=
 }
 
 const SingleProductPage = () => {
+  const [singledata,setSingledata]=useState([])
+const {id}=useParams()
+  useEffect(()=>{
+    getData(id);
+  },[])
 
-  // useEffect(()=>{
-  //   getData();
-  // },[])
-
-  // const getData=()=>{
-  //   fetch("https://dailyobject-clonebe.onrender.com/data")
-  //   .then((res)=>res.json())
-  //   .then((res)=>{
-  //     console.log(res);
-  //   })
-  //   .catch(err=>console.log(err.message));
-  // }
-
+  const getData=()=>{
+    fetch(`https://dailyobject-clonebe.onrender.com/data/${id}`)
+    .then((res)=>res.json())
+    .then((res)=>{
+     setSingledata(res)
+    })
+    .catch(err=>console.log(err.message));
+  }
+console.log(singledata)
 
   return (
     <>
@@ -69,10 +72,10 @@ const SingleProductPage = () => {
       </div>
 
       <div className={styles.box}>
-        <a href="">{initState.brand}</a>
+        <a href="">{singledata.brand}</a>
         <br/>
         <br/>
-        <Text fontSize='xl' >{initState.title}</Text>
+        <Text fontSize='xl' >{singledata.title}</Text>
         <br/>
        
         <Text fontSize='3xl' as='b' >Rs.{initState.price}</Text>
