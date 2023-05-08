@@ -14,7 +14,6 @@ function MainRoute() {
       <Route path="/" element={<LandingPage />} />
       <Route path="/userLogin" element={<UserLogin />} />
       <Route path="/userRegister" element={<UserRegister />} />
-      <Route path="'/singleProduct/:id" element={<SingleProductPage/>}/>
       <Route path="/account" element={<Account />} />
       <Route path="/products" element={<Products />} />
       <Route path="/productdetails/:id" element={<SingleProductPage/>}/>
