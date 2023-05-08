@@ -37,7 +37,7 @@ import CategoryIcon from '@mui/icons-material/Category';
 const useEnhancedEffect =
   typeof window !== 'undefined' ? React.useLayoutEffect : React.useEffect;
 
-export default function Products() {
+export default function AdminProducts() {
   const status = useScript(`https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js`);
 
   useEnhancedEffect(() => {

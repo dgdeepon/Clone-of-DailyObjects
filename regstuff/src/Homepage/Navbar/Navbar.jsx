@@ -45,7 +45,7 @@ useEffect(()=>{
 },[])
 const {data}=cartdata
 
-const bagTotal =data.length>=1?data.length:0
+const bagTotal =data.length>=1?data.length:''
 
 
     return (
