@@ -29,11 +29,12 @@ import {
 } from "react-icons/io5";
 import "../Landing.css";
 import { Link } from "react-router-dom";
+import logo from "../../images/RS-removebg-preview.png";
 
 export default function Navbar() {
     const { isOpen, onToggle } = useDisclosure();
 
-    const bagTotal = 0;
+    const bagTotal = "";
 
     return (
         <Box>
@@ -86,7 +87,7 @@ export default function Navbar() {
                     >
                         <Link to="/">
                             <Image
-                                src="Logo"
+                                src={logo}
                                 w={{ lg: "240px", base: "100%" }}
                             />
                         </Link>
