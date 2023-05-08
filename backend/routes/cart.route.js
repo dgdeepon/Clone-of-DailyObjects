@@ -26,7 +26,7 @@ cart.patch('/cartEdit/:id',async(req,res)=>{
 // delete product
 cart.delete('/cartDelete/:id',async(req,res)=>{
     try {
-        await CartModel.findByIdAndDelete({_id:id});
+        await CartModel.findByIdAndDelete({_id:req.params.id});
         res.status(200).send({"success":"data is deleted"});
     } catch (error) {
         res.status(501).send({"error":"failed to delete the data"});
