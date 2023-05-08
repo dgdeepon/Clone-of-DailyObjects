@@ -2,6 +2,7 @@ import { Flex, Box, Text, Image,Button,Spinner,useToast} from "@chakra-ui/react"
 import axios from "axios";
 import { useState} from "react";
 import {useNavigate} from "react-router-dom"
+import { useLocation } from "react-router-dom";
 // import HoverImage from "react-hover-image"
 
 const AllProducts = ({
@@ -17,6 +18,7 @@ const AllProducts = ({
 	// console.log(token)
 	const [isLoading, setIsLoading] = useState(false);
 const navigate=useNavigate()
+const location=useLocation()
 	const hadleidcheck=(title,images,price)=>{
 	
 		if(token===null){
@@ -27,7 +29,8 @@ const navigate=useNavigate()
 				duration: 2500,
 				isClosable: true,
 				position: "top",
-			});
+			})
+	navigate("/userlogin")
 		   }else{
 			   axios.get("https://dailyobject-clonebe.onrender.com/cartData",{
 				headers: {

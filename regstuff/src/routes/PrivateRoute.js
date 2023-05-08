@@ -7,7 +7,7 @@ function PrivateRoute({children}) {
     const {token}=useSelector((store)=> store.UserLoginReducer);
     const token2=localStorage.getItem('token');
 
-  return token=='' || !token2 ? <Navigate to={'/userLogin'} state={location.pathname} replace={false}/> : children;
+  return token=='' || !token2 ? <Navigate to={'/userLogin'} state={location.pathname} replace/> : children;
 }
 
 export default PrivateRoute

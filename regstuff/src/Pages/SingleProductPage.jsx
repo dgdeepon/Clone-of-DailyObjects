@@ -14,7 +14,7 @@ import axios from 'axios';
 import Navbar from '../Homepage/Navbar/Navbar';
 import Footer from '../Homepage/Footer/Footer';
 // import { useState, useEffect } from 'react';
-
+import { useLocation } from 'react-router-dom';
 const initialstate={
   additional_info:"",
   "title":"",
@@ -29,6 +29,7 @@ const initialstate={
 const SingleProductPage = () => {
   const [singledata,setSingledata]=useState(initialstate)
 const {id}=useParams()
+const location=useLocation()
   useEffect(()=>{
     getData(id);
   },[])
@@ -58,8 +59,7 @@ const navigate=useNavigate()
 				isClosable: true,
 				position: "top",
 			})
-      navigate("/userlogin")
-    
+      navigate("/userlogin")   
 		   }else{
 			   axios.get("https://dailyobject-clonebe.onrender.com/cartData",{
 				headers: {
