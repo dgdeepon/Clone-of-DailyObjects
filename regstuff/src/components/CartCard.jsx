@@ -1,16 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from "../Pages/CartPage.module.css";
+import {  AddIcon,MinusIcon,DeleteIcon  } from '@chakra-ui/icons'
 
-const test={
-    _id: "645749bc0567b0a2fe53a1e8",
-    title: "Blue Hybrid Clear Case Cover for iPhone 14",
-    image: "https://images.dailyobjects.com/marche/product-images/1101/dailyobjects-blue-hybrid-clear-case-cover-for-iphone-14-images/DailyObjects-Blue-Hybrid-Clear-Case-Cover-for-iPhone-14.png?tr=cm-pad_resize,v-2,w-960,h-860,dpr-1",
-    price: 1199,
-    quantity: 1,
-    userId: "645746aa0567b0a2fe53a1e5",
-  }
 
-function CartCard() {
+function CartCard({test}) {
+    const [count, setCount]=useState(0);
+    const handleClick=(val)=>{
+        if(count===0 && val===-1){
+            setCount(0);
+        }
+        else{
+        setCount(count+val);
+        }
+    }
+
+    const handleDelete=()=>{
+        console.log("delete btn clicked")
+    }
   return (
     <>
         <div className={styles.card} >
@@ -26,14 +32,20 @@ function CartCard() {
                 </div>
                 <div className={styles.cardContainerChildTwo}>
                     <div className={styles.btn}>
-                        <div className={styles.subBtn}></div>
-                        <div className={styles.subBtn}></div>
-                        <div className={styles.subBtn}></div>
+                        <div className={styles.subBtn} onClick={()=>{
+                            handleClick(-1)
+                        }} ><MinusIcon/></div>
+                        <div className={styles.subBtn}>{count}</div>
+                        <div className={styles.subBtn} onClick={()=>{
+                            handleClick(1)
+                        }} ><AddIcon/></div>
                     </div>
-                    <div className={styles.dlt}></div>
+                    <div className={styles.dlt} onClick={handleDelete} ><DeleteIcon/></div>
                 </div>
             </div>
         </div>
+        <hr/>
+        <br/>
     </>
   )
 }
