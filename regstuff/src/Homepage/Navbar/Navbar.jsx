@@ -28,7 +28,7 @@ import {
     IoSearchOutline,
 } from "react-icons/io5";
 import "../Landing.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { usercartproduct } from "../../redux/AllCartproductuserside/Action";
@@ -37,7 +37,7 @@ export default function Navbar() {
     const { isOpen, onToggle } = useDisclosure();
     const dispatch=useDispatch()
 const cartdata=useSelector((state)=>state.usercartreducer)
-
+const navigate=useNavigate()
 useEffect(()=>{
     dispatch(usercartproduct)
 },[])
@@ -124,7 +124,7 @@ const bagTotal =data.length>=1?data.length:0
                         variant={"link"}
                         href={"#"}
                     >
-                        <IoBagOutline size={20} color="black" />
+                        <IoBagOutline  size={20} color="black" onClick={()=>navigate("/cart")}/>
                         <span
                             style={{
                                 marginTop: "-30px",
@@ -136,11 +136,12 @@ const bagTotal =data.length>=1?data.length:0
                         </span>
                     </Button>
                     <Button
+                    _hover={{cursor:"pointer"}}
                         as={"a"}
                         fontSize={"sm"}
                         fontWeight={400}
                         variant={"link"}
-                        href={"/Account"}
+                      onClick={()=>navigate("/Account")}
                     >
                         <IoPersonOutline size={20} color="black" />
                     </Button>
