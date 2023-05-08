@@ -8,6 +8,8 @@ import {  ChevronDownIcon  } from '@chakra-ui/icons';
 import axios from 'axios';
 import { useToast } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
+import Navbar from '../Homepage/Navbar/Navbar';
+import Footer from '../Homepage/Footer/Footer';
 
 const CartPage = () => {
     const [data, setData]=useState([]);
@@ -72,6 +74,7 @@ for(let i=0;i<data.length;i++){
 
   return (
     <>
+    <Navbar/>
        <br/>
     <div style={{width:"99%",height:"100px"}} >
         <img src="https://images.dailyobjects.com/marche/assets/images/other/offer-baners-updated-homepage-desktop.jpg?tr=cm-pad_crop,v-2,w-1490,dpr-1" alt="" />
@@ -146,6 +149,7 @@ for(let i=0;i<data.length;i++){
               </div>  
             </div>
       </div>
+      <Footer/>
     </>
   )
 }
