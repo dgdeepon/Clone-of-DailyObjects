@@ -78,7 +78,7 @@ console.log(singledata)
         <Text fontSize='xl' >{singledata.title}</Text>
         <br/>
        
-        <Text fontSize='3xl' as='b' >Rs.{initState.price}</Text>
+        <Text fontSize='3xl' as='b' >Rs.{singledata.price}</Text>
         <br/>
         <br/>
         <Center marginLeft="15%" bg='green' h='8%' w="70%" color='white'>
@@ -92,7 +92,7 @@ console.log(singledata)
 
         <Box w='100%' p={2} color='black'>
              <p>Buy 1 Get 1 Free</p>
-             <p>{initState.additional_info.name1}</p>
+             <p>{typeof singledata!=="undefined"&&singledata.additional_info.name1}</p>
         </Box>
           <hr width="90%"/>
           <br/>
@@ -155,13 +155,13 @@ console.log(singledata)
     <div className={styles.container} >
       <div className={styles.box} style={{display:"flex",alignItems:"center",justifyContent:"center"}}>
         <div>
-        <Text fontSize='3xl' as='b' >{initState.additional_info.name1}</Text>
-        <p>{initState.additional_info.details1}</p>
+        <Text fontSize='3xl' as='b' >{typeof singledata!=="undefined"&&singledata.additional_info.name1}</Text>
+        <p>{typeof singledata!=="undefined"&&singledata.additional_info.details1}</p>
         </div>
       </div>
       <div className={styles.box} style={{backgroundColor:"#f7f7f7"}} >
         <img style={{width:"100%",height:"100%"}}
-        src={initState.images[1]} alt="" />
+        src={typeof singledata!=="undefined"&&singledata.images[1]&&singledata.images[1]} alt="" />
       </div>
     </div>
 
@@ -170,13 +170,13 @@ console.log(singledata)
       
       <div className={styles.box} style={{backgroundColor:"#f7f7f7"}} >
         <img style={{width:"100%",height:"100%"}}
-        src={initState.images[2]} alt="" />
+        src={typeof singledata!=="undefined"&&singledata.images[2]&&singledata.images[2]} alt="" />
       </div>
 
       <div className={styles.box} style={{display:"flex",alignItems:"center",justifyContent:"center"}}>
         <div>
-        <Text fontSize='3xl' as='b' >{initState.additional_info.name2}</Text>
-        <p>{initState.additional_info.details2}</p>
+        <Text fontSize='3xl' as='b' >{typeof singledata!=="undefined"&&singledata.additional_info.name2&&singledata.additional_info.name2}</Text>
+        <p>{typeof singledata!=="undefined"&&singledata.additional_info.details2&&singledata.additional_info.details2}</p>
         </div>
       </div>
     </div>
@@ -186,14 +186,14 @@ console.log(singledata)
       <div className={styles.box} style={{display:"flex",alignItems:"center",justifyContent:"center"}}>
         <div>
         
-        <Text fontSize='3xl' as='b' >{initState.additional_info.name3}</Text>
-        <p>{initState.additional_info.details3}</p>
+        <Text fontSize='3xl' as='b' >{typeof singledata!=="undefined"&&singledata.additional_info.name3&&singledata.additional_info.name3}</Text>
+        <p>{typeof singledata!=="undefined"&&singledata.additional_info.details3&&singledata.additional_info.details3}</p>
         </div>
       </div>
 
       <div className={styles.box} style={{backgroundColor:"#f7f7f7"}} >
         <img style={{width:"100%",height:"100%"}}
-        src={initState.images[3]} alt="" />
+        src={typeof singledata!=="undefined"&&singledata.images[3]&&singledata.images[3]} alt="" />
       </div>
     </div>
 
@@ -201,13 +201,13 @@ console.log(singledata)
     <div className={styles.container} >
       <div className={styles.box} style={{backgroundColor:"#f7f7f7"}} >
         <img style={{width:"100%",height:"100%"}}
-        src={initState.images[4]} alt="" />
+        src={typeof singledata!=="undefined"&&singledata.images[4]&&singledata.images[4]} alt="" />
       </div>
       <div className={styles.box} style={{display:"flex",alignItems:"center",justifyContent:"center"}}>
         <div>
         
-        <Text fontSize='3xl' as='b' >{initState.additional_info.name4}</Text>
-        <p>{initState.additional_info.details4}</p>
+        <Text fontSize='3xl' as='b' >{typeof singledata!=="undefined"&&singledata.additional_info.name4&&singledata.additional_info.name4}</Text>
+        <p>{typeof singledata!=="undefined"&&singledata.additional_info.details4&&singledata.additional_info.details4}</p>
         </div>
       </div>
     </div>
@@ -218,14 +218,14 @@ console.log(singledata)
       <div className={styles.box} style={{display:"flex",alignItems:"center",justifyContent:"center"}}>
         <div>
         
-        <Text fontSize='3xl' as='b' >{initState.additional_info.name5}</Text>
-        <p>{initState.additional_info.details5}</p>
+        <Text fontSize='3xl' as='b' >{typeof singledata!=="undefined"&&singledata.additional_info.name5&&singledata.additional_info.name5}</Text>
+        <p>{typeof singledata!=="undefined"&&singledata.additional_info.details5&&singledata.additional_info.details5}</p>
         </div>
       </div>
 
       <div className={styles.box} style={{backgroundColor:"#f7f7f7"}} >
         <img style={{width:"100%",height:"100%"}}
-        src={initState.images[5]} alt="" />
+        src={typeof singledata!=="undefined"&&singledata.images[5]&&singledata.images[5]} alt="" />
       </div>
     </div>
 
