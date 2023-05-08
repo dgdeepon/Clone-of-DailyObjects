@@ -1,12 +1,11 @@
-import { Box, Button, Image, Input, Spinner, Text, VStack, useToast } from '@chakra-ui/react'
+import { Box, Button, Grid, Image, Input, Spinner, Text, VStack, useToast } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { LoginNow } from '../redux/UserLoginReducer/Action';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import backgroundImage from '../images/bookcase-g87bd5630f_1920.jpg'
 import logo from '../images/RS-removebg-preview.png';
 import Navbar from '../Homepage/Navbar/Navbar';
-import Footer from '../Homepage/Footer/Footer';
+import sideImage from '../images/shopping-g6bf6f4ad8_1920.jpg';
 
 function UserLogin() {
     const toast=useToast();
@@ -42,8 +41,10 @@ function UserLogin() {
   return (
     <>
     <Navbar/>
-    <VStack h={'100vh'} p={'20px'} backdropFilter={'auto'} backdropBlur={'2px'}>
-        <VStack mt={'5%'} backdropFilter={'auto'} backdropBlur={'2px'}>
+    <Grid gridTemplateColumns={{base:'1fr','2xl':'40% 1fr'}} >
+            <Image src={sideImage} objectFit={'contain'} w={'75%'} h={'100%'} display={{base:'none','2xl':'inline-block'}}/>
+    <VStack p={'20px'} >
+        <VStack mt={'15%'}>
             <Link to={'/'}>
             <Image src={logo}/>
             </Link>
@@ -61,6 +62,7 @@ function UserLogin() {
         </Link>
         </VStack>
     </VStack>
+    </Grid>
             </>
   )
 }
