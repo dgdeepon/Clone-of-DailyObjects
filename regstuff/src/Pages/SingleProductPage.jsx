@@ -55,7 +55,9 @@ const navigate=useNavigate()
 				duration: 2500,
 				isClosable: true,
 				position: "top",
-			});
+			})
+      navigate("/userlogin")
+    
 		   }else{
 			   axios.get("https://dailyobject-clonebe.onrender.com/cartData",{
 				headers: {
