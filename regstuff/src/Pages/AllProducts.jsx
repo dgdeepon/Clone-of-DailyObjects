@@ -1,7 +1,7 @@
 import { Flex, Box, Text, Image,Button,Spinner,useToast} from "@chakra-ui/react";
 import axios from "axios";
 import { useState } from "react";
-
+import {useNavigate} from "react-router-dom"
 const AllProducts = ({
 	images,
 	title,
@@ -14,7 +14,7 @@ const AllProducts = ({
 	let token=localStorage.getItem("token")
 	// console.log(token)
 	const [isLoading, setIsLoading] = useState(false);
-
+const navigate=useNavigate()
 	const hadleidcheck=(title,images,price)=>{
 	
 		if(token===null){
@@ -107,7 +107,7 @@ const mobiles=(title,images,price)=>{
 						alt={`Pic`}
 						roundedTop="xl"
                         //while clicking
-						// onClick={() => navigate(`/productdetails/${_id}`)}
+						onClick={() => navigate(`/productdetails/${_id}`)}
 					/>
 
 					<Box backgroundColor={"white"} p="6">
