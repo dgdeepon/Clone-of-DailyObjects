@@ -34,7 +34,7 @@ const {id}=useParams()
   },[])
 
   const getData=()=>{
-    fetch(`https://dailyobject-clonebe.onrender.com/data/${id}`)
+    fetch(`${process.env.REACT_APP_DATA}/${id}`)
     .then((res)=>res.json())
     .then((res)=>{
      setSingledata(res)
@@ -61,7 +61,7 @@ const navigate=useNavigate()
       navigate("/userlogin")
     
 		   }else{
-			   axios.get("https://dailyobject-clonebe.onrender.com/cartData",{
+			   axios.get(process.env.REACT_APP_CARTDATA,{
 				headers: {
 					Authorization: `Bearer ${token}`
 				  }
@@ -104,7 +104,7 @@ console.log(title,images,price)
 		// const {title,price,image,quantity}=payload
 		// console.log(title,price,image,quantity)
 		// console.log(typeof price)
-		axios.post("https://dailyobject-clonebe.onrender.com/cartData/addToCart",{"title":title,price:Number(price),image:images[0],quantity:1}, {
+		axios.post(`${process.env.REACT_APP_CARTDATA}/addToCart`,{"title":title,price:Number(price),image:images[0],quantity:1}, {
 			headers: {
 				Authorization: `Bearer ${token}`
 			  }

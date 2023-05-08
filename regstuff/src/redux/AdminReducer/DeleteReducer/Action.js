@@ -13,7 +13,7 @@ export const deletefailure=()=>{
 export const deletedata=(id)=>(dispatch)=>{
     dispatch(deleterequest())
     const token=localStorage.getItem("admintoken")
-    return axios.delete(`https://dailyobject-clonebe.onrender.com/admin/delete/${id}`,{
+    return axios.delete(`${process.env.REACT_APP_ADMIN}/delete/${id}`,{
         headers: {
             Authorization: `Bearer ${token}`
           }

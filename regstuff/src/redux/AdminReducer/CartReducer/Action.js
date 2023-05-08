@@ -12,7 +12,7 @@ export const cartdatafailure=()=>{
 export const cartdata=(dispatch)=>{
     dispatch(cardatarequest())
     const token=(localStorage.getItem("admintoken"))
-   axios.get("https://dailyobject-clonebe.onrender.com/admin/cart",{
+   axios.get(`${process.env.REACT_APP_ADMIN}/cart`,{
         headers: {
             Authorization: `Bearer ${token}`
           }

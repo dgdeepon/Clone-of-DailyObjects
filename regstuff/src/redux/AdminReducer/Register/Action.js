@@ -17,7 +17,7 @@ const token=localStorage.getItem("admintoken")
 
 
 
-    return axios.post("https://dailyobject-clonebe.onrender.com/admin/register",obj,{
+    return axios.post(`${process.env.REACT_APP_ADMIN}/register`,obj,{
 headers: {
     Authorization: `Bearer ${token}`
   }
