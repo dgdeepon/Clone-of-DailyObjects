@@ -408,15 +408,15 @@ const NAV_ITEMS = [
             },
             {
                 label: "Oneplus",
-                href: "#",
+                href: "/products",
             },
             {
                 label: "Samsumg",
-                href: "#",
+                href: "/products",
             },
             {
                 label: "Xiaomi",
-                href: "#",
+                href: "/products",
             },
         ],
     },
