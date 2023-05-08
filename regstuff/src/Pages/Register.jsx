@@ -16,11 +16,12 @@ function UserRegister() {
     const {token,isLoading,isError}=useSelector((store)=>{
         return store.UserLoginReducer;
     });
+    const token2=localStorage.getItem('token');
     const dispatch=useDispatch();
     const navi=useNavigate();
 
     useEffect(()=>{
-        if(token!==''){
+        if(token!=='' || token2){
             return navi('/Account');
         }
     },[])
