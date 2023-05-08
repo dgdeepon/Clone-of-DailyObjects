@@ -15,7 +15,7 @@ const Products = () => {
 
     useEffect(() => {
         axios
-            .get(`https://dailyobject-clonebe.onrender.com/data`)
+            .get(process.env.REACT_APP_DATA)
             .then((res) => setdata(res.data));
     }, []);
     useEffect((x) => {
@@ -25,7 +25,7 @@ const Products = () => {
           setcases(true)
         }
         axios
-		.get(`https://dailyobject-clonebe.onrender.com/data?brand=${x}`)
+		.get(`${process.env.REACT_APP_DATA}?brand=${x}`)
 		.then((res) => setdata(res.data));
                     
     }, []);
@@ -45,7 +45,7 @@ const Products = () => {
     const productbrand = (brand) => {
         setdata([]);
         axios
-            .get(`https://dailyobject-clonebe.onrender.com/data?brand=${brand}`)
+            .get(`${process.env.REACT_APP_DATA}?brand=${brand}`)
             .then((res) => setdata(res.data));
     };
 
@@ -53,7 +53,7 @@ const Products = () => {
     const Allproductsshow = () => {
         setdata([]);
         axios
-            .get(`https://dailyobject-clonebe.onrender.com/data`)
+            .get(`${process.env.REACT_APP_DATA}`)
             .then((res) => setdata(res.data));
     };
 
@@ -151,7 +151,7 @@ const Products = () => {
                         gap={7}
                         w="95%"
                         m="auto">
-                        {data.map((ele) => (
+                        {data?.map((ele) => (
                             <AllProducts key={ele._id} {...ele} />
                         ))}
                     </Grid>
