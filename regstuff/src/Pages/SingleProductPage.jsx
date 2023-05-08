@@ -8,53 +8,24 @@ import { Square } from '@chakra-ui/react';
 import SingleProductPageCarousel from "./SingleProductPageCarousel";
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
+import { useToast,Button } from '@chakra-ui/react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 // import { useState, useEffect } from 'react';
 
-const initState=
-  {
-    "additional_info": {
-        "name1": "DEPENDABLE PROTECTION, UNCOMPROMISED STYLE",
-        "details1": "The new shock absorption bumper gives 360 degree protection to the phone using the novel Air Cushion Technology and never fails to make you look stylish by showcasing the actual colour of the phone.",
-        "name2": "IT’S ALL IN THE DETAILS",
-        "details2": "Slim, lightweight design embodies quick port access, strong grip with superior tactile finish, and a minimal depth for a happy pocket.",
-        "name3": "SHOCK POCKET TECHNOLOGY",
-        "details3": "Shock pocket technology of the Hybrid Clear Case offers heavy duty protection from falling as it’s tested at 9.8 feet drop safety and comes with extra raised rims.",
-        "name4": "FLAUNT YOUR LOVE",
-        "details4": "Choice of all our loyal customers, these case covers make you want to flaunt your pick.",
-        "name5": "STURDY DESIGN",
-        "details5": "Raised edges of the TPU protect the camera and screen to  give your phone the chance of bouncing back from all the falls it may go through. A thick rubber layer with plastic polymer keeps  your phone from cracking.",
-        "name6": "CHARGE WITHOUT BOUNDS",
-        "details6": "A phone-case that gets along with all Qi-Certified wireless chargers, EarPods and protective screen guards, is all you need."
-    },
-    "_id": "64502a3c21731bf0729cdf3f",
-    "title": "Blue Hybrid Clear Case Cover for iPhone 14",
-    "price": 1199,
-    "category": "phone case",
-    "images": [
-        "https://images.dailyobjects.com/marche/product-images/1101/dailyobjects-blue-hybrid-clear-case-cover-for-iphone-14-images/DailyObjects-Blue-Hybrid-Clear-Case-Cover-for-iPhone-14.png?tr=cm-pad_resize,v-2,w-960,h-860,dpr-1",
-        "https://images.dailyobjects.com/marche/product-images/1101/dailyobjects-blue-hybrid-clear-case-cover-for-iphone-14-images/DailyObjects-Blue-Hybrid-Clear-Case-Cover-for-iPhone-14-1.png?tr=cm-pad_resize,v-2,w-960,h-860,dpr-1",
-        "https://images.dailyobjects.com/marche/product-images/1101/dailyobjects-blue-hybrid-clear-case-cover-for-iphone-14-images/DailyObjects-Blue-Hybrid-Clear-Case-Cover-for-iPhone-14-2.png?tr=cm-pad_resize,v-2,w-960,h-860,dpr-1",
-        "https://images.dailyobjects.com/marche/product-images/1101/dailyobjects-blue-hybrid-clear-case-cover-for-iphone-14-images/blue-plain-hybrid-clear-case-iphone-14-3.png?tr=cm-pad_resize,v-2,w-960,h-860,dpr-1",
-        "https://images.dailyobjects.com/marche/product-images/1101/dailyobjects-blue-hybrid-clear-case-cover-for-iphone-14-images/blue-plain-hybrid-clear-case-iphone-14-4.png?tr=cm-pad_resize,v-2,w-960,h-860,dpr-1",
-        "https://images.dailyobjects.com/marche/product-images/1101/dailyobjects-blue-hybrid-clear-case-cover-for-iphone-14-images/blue-plain-hybrid-clear-case-iphone-14-5.png?tr=cm-pad_resize,v-2,w-960,h-860,dpr-1"
-    ],
-    "brand": "iphone14",
-    "color": "blue",
-    "hex": "#0f2338",
-    "mrp": 2199
-}
 const initialstate={
   additional_info:"",
+  "title":"",
   "images":[],
   "brand":"",
   "category":"",
-  "mrp":"",
-  "price":"",
+  "mrp":0,
+  "price":0,
   "hex":"",
   "color":""
 }
 const SingleProductPage = () => {
-  const [singledata,setSingledata]=useState(initState)
+  const [singledata,setSingledata]=useState(initialstate)
 const {id}=useParams()
   useEffect(()=>{
     getData(id);
@@ -68,7 +39,86 @@ const {id}=useParams()
     })
     .catch(err=>console.log(err.message));
   }
-console.log(singledata)
+// console.log(singledata)
+const toast = useToast()
+	let token=localStorage.getItem("token")
+	// console.log(token)
+	const [isLoading, setIsLoading] = useState(false);
+const navigate=useNavigate()
+	const handleidcheck=(title,images,price)=>{
+	
+		if(token===null){
+			toast({
+				title: "Please login first",
+				description: "",
+				status: "error",
+				duration: 2500,
+				isClosable: true,
+				position: "top",
+			});
+		   }else{
+			   axios.get("https://dailyobject-clonebe.onrender.com/cartData",{
+				headers: {
+					Authorization: `Bearer ${token}`
+				  }
+				}).then((res) => {
+								
+								let datacheck = res.data;
+	
+								const alreadyAdded = datacheck.filter((el) => el.title === title);
+	
+								if (alreadyAdded.length >= 1) {
+									toast({
+										title: "Product Already  Added In Cart",
+										description: "",
+										status: "error",
+										duration: 2500,
+										isClosable: true,
+										position: "top",
+									});
+								} else {
+									mobiles(title,images,price);
+								}
+							})
+							.catch((err) => console.log(err));
+		}
+		 }
+	
+const mobiles=(title,images,price)=>{
+// console.log(images[0],price,title)
+// price=+(price)
+console.log(title,images,price)
+		let payload={
+			"title":title,
+		
+			"price":Number(price),
+			"image":images[0],
+			"quantity":1
+
+		}
+		
+		// const {title,price,image,quantity}=payload
+		// console.log(title,price,image,quantity)
+		// console.log(typeof price)
+		axios.post("https://dailyobject-clonebe.onrender.com/cartData/addToCart",{"title":title,price:Number(price),image:images[0],quantity:1}, {
+			headers: {
+				Authorization: `Bearer ${token}`
+			  }
+			}).then((res) =>
+      
+      {toast({description:"Product is added to cart",position:"top"})
+    
+      navigate("/cart")
+    
+    }
+     
+      
+      )
+	 }
+
+
+
+
 
   return (
     <>
@@ -77,7 +127,7 @@ console.log(singledata)
       <div className={styles.box} style={{backgroundColor:"#f7f7f7"}} >
         {/* <img style={{width:"100%"}} 
          src={initState.images[0]} alt="#broken_image" /> */}
-         <SingleProductPageCarousel initState={initState} />
+         <SingleProductPageCarousel initState={typeof singledata!==undefined&&singledata} />
       </div>
 
       <div className={styles.box}>
@@ -90,8 +140,8 @@ console.log(singledata)
         <Text fontSize='3xl' as='b' >Rs.{typeof singledata!=="undefined"&&singledata.price}</Text>
         <br/>
         <br/>
-        <Center marginLeft="15%" bg='green' h='8%' w="70%" color='white'>
-           <a href="" style={{color:"white",textDecorationLine:"none" }}>Add to cart</a>
+        <Center _hover={{cursor:"pointer"}} onClick={()=>handleidcheck(singledata.title,singledata.images,singledata.price)} marginLeft="15%" bg='green' h='8%' w="70%" color='white'>
+         Add to cart
         </Center>
           <br/>
           <br/>

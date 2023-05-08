@@ -7,6 +7,7 @@ import PrivateRoute from "./PrivateRoute";
 import LandingPage from "../Homepage/LandingPage/LandingPage";
 import Products from "../Pages/Products";
 import SingleProductPage from "../Pages/SingleProductPage";
+import CartPage from "../Pages/CartPage";
 
 function MainRoute() {
   return (
@@ -18,6 +19,7 @@ function MainRoute() {
       <Route path="/account" element={<Account />} />
       <Route path="/products" element={<Products />} />
       <Route path="/productdetails/:id" element={<SingleProductPage/>}/>
+      <Route path="/cart" element={<CartPage/>}/>
     </Routes>
   );
 }
