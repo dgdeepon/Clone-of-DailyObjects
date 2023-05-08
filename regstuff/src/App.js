@@ -10,7 +10,7 @@ function App() {
     return (
         <div className="App">
             <MainRoute />
-            <AllRoutes />
+            <AllRoutes />  
         </div>
     );
 }
