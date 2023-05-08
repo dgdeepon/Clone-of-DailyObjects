@@ -128,7 +128,7 @@ const bagTotal =data.length>=1?data.length:0
                         fontSize={"sm"}
                         fontWeight={400}
                         variant={"link"}
-                        href={"#"}
+                        href={"/cart"}
                     >
                         <IoBagOutline  size={20} color="black" onClick={()=>navigate("/cart")}/>
                         <span
@@ -404,7 +404,7 @@ const NAV_ITEMS = [
         children: [
             {
                 label: "Apple",
-                href: "#",
+                href: "/products",
             },
             {
                 label: "Oneplus",
