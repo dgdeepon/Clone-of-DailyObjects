@@ -5,13 +5,45 @@ import { Center  } from '@chakra-ui/react'
 import CartComponent from "../components/CartComponent"
 import CartCard from '../components/CartCard';
 import {  ChevronDownIcon  } from '@chakra-ui/icons';
-
-
+import axios from 'axios';
+import { useToast } from '@chakra-ui/react';
 
 const CartPage = () => {
     const [data, setData]=useState([]);
-    
 
+    const [deleteitem,setDeleteItem]=useState(false)
+    const toast=useToast()
+    // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    const [count, setCount]=useState(0);
+    const handleClick=(id,quantity,val)=>{
+       if(quantity>=0){
+        quantity=quantity+val
+        setCount(quantity)
+        // console.log(id)
+        // console.log(typeof quantity,quantity)
+        const token=localStorage.getItem("token")
+        axios.patch(`https://dailyobject-clonebe.onrender.com/cartData/cartEdit/${id}`,{"quantity":quantity},{
+            headers: {
+                Authorization: `Bearer ${token}`
+              }
+            }).then((res) => {
+          getData()
+            })
+        }}
+   
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+const handleDelete=(id)=>{
+
+  const token=localStorage.getItem("token")
+        axios.delete(`https://dailyobject-clonebe.onrender.com/cartData/cartDelete/${id}`,{
+            headers: {
+                Authorization: `Bearer ${token}`
+              }
+            }).then((res) => {
+      toast({"description":res.data.success,position:"top"})
+      getData()
+            })
+}
     useEffect(()=>{
       getData();
     },[])
@@ -24,12 +56,15 @@ const token=localStorage.getItem("token")
                 "Content-type":"application/json()"
             }
         }).then((res)=>res.json()).then((res)=>{
-          console.log(res);
+          // console.log(res);
           return setData(res);
         })
         .catch((err)=>console.log(err.message));
     }
-
+let sum=0
+for(let i=0;i<data.length;i++){
+  sum=sum+(data[i].quantity*(Number(data[i].price)))
+}
     if(data.length===0){
       return <CartComponent/>
     }
@@ -54,7 +89,7 @@ const token=localStorage.getItem("token")
     <div className={styles.container} >
             <div className={styles.boxScroll}>
             {data.map((el)=>{
-              return <CartCard test={el} />
+              return <CartCard test={el} handleClick={handleClick} handleDelete={handleDelete} />
             })}
             </div>
 
@@ -85,8 +120,8 @@ const token=localStorage.getItem("token")
                           </div>
 
                           <div className={styles.boxTypeThree} >
-                              <div> <Text fontSize='md' as='b' >Item Total (1 Item)</Text></div>
-                              <div ><Text fontSize='2xl' as='b' >Rs. 1</Text></div>
+                              <div> <Text fontSize='md' as='b' >Item Total ({data.length} Item)</Text></div>
+                              <div ><Text fontSize='2xl' as='b' >Rs. {sum}</Text></div>
                           </div>
 
                       
@@ -98,11 +133,11 @@ const token=localStorage.getItem("token")
 
                           <div className={styles.boxTypeThree} >
                               <div> <Text fontSize='md' as='b' >Grand Total</Text></div>
-                              <div ><Text fontSize='xl' as='b'  >Rs.1199</Text></div>
+                              <div ><Text fontSize='xl' as='b'  >Rs.{sum}</Text></div>
                           </div>
                             <br/>
                           <Center  bg='#20a87e' h='50px' w="100%" color='white'>
-                            <a href="" style={{color:"white",textDecorationLine:"none" }}>CHECKOUT</a>
+                            <a href="/payment" style={{color:"white",textDecorationLine:"none" }}>CHECKOUT</a>
                           </Center>
                   </div>
                         
