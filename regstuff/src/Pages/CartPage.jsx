@@ -7,6 +7,7 @@ import CartCard from '../components/CartCard';
 import {  ChevronDownIcon  } from '@chakra-ui/icons';
 import axios from 'axios';
 import { useToast } from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
 
 const CartPage = () => {
     const [data, setData]=useState([]);
@@ -137,7 +138,7 @@ for(let i=0;i<data.length;i++){
                           </div>
                             <br/>
                           <Center  bg='#20a87e' h='50px' w="100%" color='white'>
-                            <a href="/payment" style={{color:"white",textDecorationLine:"none" }}>CHECKOUT</a>
+                            <Link to="/checkout" style={{color:"white",textDecorationLine:"none" }}>CHECKOUT</Link>
                           </Center>
                   </div>
                         
