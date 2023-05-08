@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import AllProducts from "./AllProducts";
 import { useLocation } from "react-router-dom";
+import Navbar from "../Homepage/Navbar/Navbar";
+import Footer from "../Homepage/Footer/Footer";
 
 
 const Products = () => {
@@ -10,17 +12,14 @@ const Products = () => {
     const [filters, setfilters] = useState(false);
     const [data, setdata] = useState([]);
     const [cases,setcases]=useState(false)
-    // let names = location.pathname;
-    // const last = names.split("/");
-    // let x = last[last.length - 1]
 
-    // useEffect(() => {
-    //     axios
-	// 		.get(`https://dailyobject-clonebe.onrender.com/data`)
-	// 		.then((res) => setdata(res.data));
-    // }, []);
+    useEffect(() => {
+        axios
+            .get(`https://dailyobject-clonebe.onrender.com/data`)
+            .then((res) => setdata(res.data));
+    }, []);
     useEffect((x) => {
-        if(x==="iphone14"||x==="iphone Pro Max" ||x==="Samsung"||x==="OnePlus"){
+        if(x==="iphone14"||x==="iphone Pro Max" ||x==="Galaxy M53"||x==="Oneplus 10"){
             setcases(false)
         }else{
           setcases(true)
@@ -33,16 +32,12 @@ const Products = () => {
 
     //sorting
     const lowtohigh = () => {
-        const num1 = [...data].sort(
-            (a, b) => a.price - b.price
-        );
+        const num1 = [...data].sort((a, b) => a.price - b.price);
         setdata(num1);
     };
 
     const hightolow = () => {
-        const num2 = [...data].sort(
-            (a, b) => b.price - a.price
-        );
+        const num2 = [...data].sort((a, b) => b.price - a.price);
         setdata(num2);
     };
 
@@ -50,21 +45,21 @@ const Products = () => {
     const productbrand = (brand) => {
         setdata([]);
         axios
-					.get(`https://dailyobject-clonebe.onrender.com/data?brand=${brand}`)
-					.then((res) => setdata(res.data));
+            .get(`https://dailyobject-clonebe.onrender.com/data?brand=${brand}`)
+            .then((res) => setdata(res.data));
     };
 
     //Allproduct show
     const Allproductsshow = () => {
         setdata([]);
         axios
-		.get(`https://dailyobject-clonebe.onrender.com/data`)
-		.then((res) => setdata(res.data));
-    }
+            .get(`https://dailyobject-clonebe.onrender.com/data`)
+            .then((res) => setdata(res.data));
+    };
 
     return (
         <>
-        
+        <Navbar/>
         <Box mt={20}>
             <Box>
                 <Image src="https://images.dailyobjects.com/marche/assets/images/other/offer-baners-updated-homepage-desktop.jpg?tr=cm-pad_crop,v-2,dpr-1" />
@@ -83,61 +78,61 @@ const Products = () => {
                         borderRadius={"50%"}
                         m="auto"
                         src="https://images.dailyobjects.com/marche/icons/new-arrival/all.png?tr=cm-pad_resize,v-2,w-70,h-70,dpr-1"
+                        _hover={{transform:"scale(1.15)",}}
+						transition={"0.2s ease-in-out"}
                     />
                     <Text textAlign={"center"} fontSize={"sm"}>
                         All
                     </Text>
                 </Box>
-
                 <Box value="iphone14" onClick={() => productbrand("iphone14")}>
                     <Image
                         borderRadius={"50%"}
                         m="auto"
                         src="https://images.dailyobjects.com/marche/icons/filter/updated-filter-icons.png?tr=cm-pad_resize,v-2,w-70,h-70,dpr-1"
+                        _hover={{transform:"scale(1.15)",}}
+						transition={"0.2s ease-in-out"}
                     />
                     <Text textAlign={"center"} fontSize={"sm"}>
                     iphone14
                     </Text>
                 </Box>
-
                 <Box  value="iphone14 Pro Max"
                     onClick={() => productbrand("iphone14 Pro Max")}>
                     <Image
                         borderRadius={"50%"}
                         m="auto"
                         src="https://images.dailyobjects.com/marche/icons/filter/updated-filter-icons2.png?tr=cm-pad_resize,v-2,w-70,h-70,dpr-1"
+                        _hover={{transform:"scale(1.15)",}}
+						transition={"0.2s ease-in-out"}
                     />
                     <Text textAlign={"center"}>iphone14 Pro Max</Text>
                 </Box>
-                <Box  value="Samsung"
-                    onClick={() => productbrand("Samsung")}>
+                <Box  value="Galaxy M53"
+                    onClick={() => productbrand("Galaxy M53")}>
                     <Image
                         borderRadius={"50%"}
                         m="auto"
                         src="https://images.dailyobjects.com/marche/icons/category/glass-cases.png?tr=cm-pad_resize,v-2,w-70,h-70,dpr-1"
+                        _hover={{transform:"scale(1.15)",}}
+						transition={"0.2s ease-in-out"}
                     />
                     <Text textAlign={"center"}>Samsung</Text>
                 </Box>
-                <Box  value="OnePlus"
-                    onClick={() => productbrand("OnePlus")}>
+                <Box  value="Oneplus 10"
+                    onClick={() => productbrand("Oneplus 10")}>
                     <Image
                         borderRadius={"50%"}
                         m="auto"
                         src="https://images.dailyobjects.com/marche/icons/category/designer-glass-cases.png?tr=cm-pad_resize,v-2,w-70,h-70,dpr-1"
+                        _hover={{transform:"scale(1.15)",}}
+						transition={"0.2s ease-in-out"}
                     />
-                    <Text textAlign={"center"}>OnePlus</Text>
+                    <Text textAlign={"center"}>Oneplus</Text>
                 </Box>
-
-                
-                
-               
             </Box>
             </Box>
-            
             </Box>
-        
-            
-
             <Button
                 fontSize={"lg"}
                 display={"block"}
@@ -167,7 +162,7 @@ const Products = () => {
                             <Button
                                 borderRadius={"25px"}
                                 colorScheme="teal"
-                                backgroundColor="#20a87e"
+                                backgroundColor="#20A87E"
                                 variant="solid"
                                 display={"block"}
                                 mt="15px"
@@ -196,12 +191,9 @@ const Products = () => {
                     </Box>
                 )}
             </Box>
-        
-        
+        <Footer/>
         </>
-        
     );
-    
 };
 
 export default Products;

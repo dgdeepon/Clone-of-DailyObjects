@@ -14,7 +14,7 @@ import {
     useBreakpointValue,
     useDisclosure,
     HStack,
-    Image, 
+    Image,
 } from "@chakra-ui/react";
 import {
     HamburgerIcon,
@@ -28,12 +28,25 @@ import {
     IoSearchOutline,
 } from "react-icons/io5";
 import "../Landing.css";
-import { Link } from "react-router-dom";
+import logo from "../../images/RS-removebg-preview.png";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { usercartproduct } from "../../redux/AllCartproductuserside/Action";
+
 
 export default function Navbar() {
     const { isOpen, onToggle } = useDisclosure();
+    const dispatch=useDispatch()
+const cartdata=useSelector((state)=>state.usercartreducer)
+const navigate=useNavigate()
+useEffect(()=>{
+    dispatch(usercartproduct)
+},[])
+const {data}=cartdata
 
-    const bagTotal = 0;
+const bagTotal =data.length>=1?data.length:0
+
 
     return (
         <Box>
@@ -86,14 +99,17 @@ export default function Navbar() {
                     >
                         <Link to="/">
                             <Image
-                                src="Logo"
+                                src={logo}
                                 w={{ lg: "240px", base: "100%" }}
                             />
                         </Link>
                     </Box>
 
                     <Box w={"100%"}>
-                        <Flex display={{ base: "none", md: "flex" }}>
+                        <Flex
+                            display={{ base: "none", md: "flex" }}
+                            // alignItems={{ lg: "center" }}
+                        >
                             <Box margin={"auto"}>
                                 <DesktopNav />
                             </Box>
@@ -114,7 +130,7 @@ export default function Navbar() {
                         variant={"link"}
                         href={"#"}
                     >
-                        <IoBagOutline size={20} color="black" />
+                        <IoBagOutline  size={20} color="black" onClick={()=>navigate("/cart")}/>
                         <span
                             style={{
                                 marginTop: "-30px",
@@ -126,11 +142,12 @@ export default function Navbar() {
                         </span>
                     </Button>
                     <Button
+                    _hover={{cursor:"pointer"}}
                         as={"a"}
                         fontSize={"sm"}
                         fontWeight={400}
                         variant={"link"}
-                        href={"/Account"}
+                      onClick={()=>navigate("/Account")}
                     >
                         <IoPersonOutline size={20} color="black" />
                     </Button>
@@ -160,49 +177,11 @@ const DesktopNav = () => {
 
     return (
         <Stack direction={"row"} spacing={4}>
-            {/* {NAV_ITEMS.map((navItem) => (
-                <Box key={navItem.brand}>
-                    <Popover trigger={"hover"} placement={"bottom-start"}>
-                        <PopoverTrigger>
-                            <Link
-                                className="Desktopnav-fonts"
-                                p={2}
-                                href={navItem.href ?? "#"}
-                                fontSize={"md"}
-                                fontWeight={500}
-                                color={linkColor}
-                                _hover={{
-                                    textDecoration: "none",
-                                    color: linkHoverColor,
-                                }}
-                            >
-                                {navItem.label}
-                            </Link>
-                        </PopoverTrigger>
-
-                        {navItem.children && (
-                            <PopoverContent
-                                border={0}
-                                boxShadow={"xl"}
-                                bg={popoverContentBgColor}
-                                p={4}
-                                rounded={"xl"}
-                                minW={"sm"}
-                            >
-                                <Stack>
-                                    {navItem.children.map((child) => (
-                                        <DesktopSubNav
-                                            key={child.label}
-                                            {...child}
-                                        />
-                                    ))}
-                                </Stack>
-                            </PopoverContent>
-                        )}
-                    </Popover>
-                </Box>
-            ))} */}
-            <Flex gap={"20px"}>
+            <Flex
+                gap={"20px"}
+                justifyContent={"center"}
+                // border={"1px solid black"}
+            >
                 {/* Tech section */}
                 {NavBarItems.map((sections) => {
                     return (
@@ -551,7 +530,7 @@ const NavBarItems = [
 const NavData = [
     {
         heading: "TECH",
-        NavContentItem : [
+        NavContentItem: [
             {
                 img: "https://images.dailyobjects.com/marche/assets/images/other/phone-cases-s.png?tr=cm-pad_resize,v-2,dpr-1",
                 category: "PHONE CASE",
@@ -606,10 +585,15 @@ const NavData = [
             {
                 img: "https://images.dailyobjects.com/marche/assets/images/other/other-accessories-s.png?tr=cm-pad_resize,v-2,dpr-1",
                 category: "OTHER ACCESORIES",
-                brand: ["Screen Guards", "AirPod Cases", "iPad Cases", "AirTag Cases"],
+                brand: [
+                    "Screen Guards",
+                    "AirPod Cases",
+                    "iPad Cases",
+                    "AirTag Cases",
+                ],
                 href: "#",
             },
-        ]
+        ],
     },
 ];
 

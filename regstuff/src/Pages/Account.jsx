@@ -62,6 +62,7 @@ function Account() {
                 <Text cursor={'pointer'} fontSize={'xl'} px={'20px'} w={'100%'}>Rewards <FontAwesomeIcon icon={faCaretRight}/></Text>    
                 <Text cursor={'pointer'} fontSize={'xl'} onClick={()=>{
                         dispatch(LogoutNow);
+                        localStorage.removeItem('token');
                 }} px={'20px'} w={'100%'}>Logout <FontAwesomeIcon icon={faCaretRight}/></Text>    
             </VStack>
             <VStack>

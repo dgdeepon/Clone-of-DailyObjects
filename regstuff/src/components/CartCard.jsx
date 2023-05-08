@@ -1,22 +1,15 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from "../Pages/CartPage.module.css";
 import {  AddIcon,MinusIcon,DeleteIcon  } from '@chakra-ui/icons'
 
+import axios from 'axios';
+import { Button } from '@chakra-ui/react';
+function CartCard({test,handleClick,handleDelete}) {
+   
 
-function CartCard({test}) {
-    const [count, setCount]=useState(0);
-    const handleClick=(val)=>{
-        if(count===0 && val===-1){
-            setCount(0);
-        }
-        else{
-        setCount(count+val);
-        }
-    }
+    
 
-    const handleDelete=()=>{
-        console.log("delete btn clicked")
-    }
+  
   return (
     <>
         <div className={styles.card} >
@@ -28,19 +21,20 @@ function CartCard({test}) {
                 <div className={styles.cardContainerChildOne}>
                     <br/>
                     <p>{test.title}</p>
-                    <p style={{fontWeight:"bold"}} >Rs.{test.price}</p>
+                    <p style={{fontWeight:"bold"}} >Rs.{Number(test.quantity)*(Number(test.price))}</p>
                 </div>
                 <div className={styles.cardContainerChildTwo}>
                     <div className={styles.btn}>
-                        <div className={styles.subBtn} onClick={()=>{
-                            handleClick(-1)
-                        }} ><MinusIcon/></div>
-                        <div className={styles.subBtn}>{count}</div>
-                        <div className={styles.subBtn} onClick={()=>{
-                            handleClick(1)
-                        }} ><AddIcon/></div>
+                        <div className={styles.subBtn}  ><button disabled={test.quantity<=1&&true} onClick={()=>{
+                            handleClick(test._id,test.quantity,-1)
+                        }}><MinusIcon /></button></div>
+                        <div className={styles.subBtn}>{test.quantity}</div>
+                        <div className={styles.subBtn}  ><button onClick={()=>{
+                            handleClick(test._id,test.quantity,1)
+                        }}><AddIcon  /></button>
+                        </div>
                     </div>
-                    <div className={styles.dlt} onClick={handleDelete} ><DeleteIcon/></div>
+                    <div className={styles.dlt}  ><button onClick={()=>handleDelete(test._id)}><DeleteIcon/></button></div>
                 </div>
             </div>
         </div>

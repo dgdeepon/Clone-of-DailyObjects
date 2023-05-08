@@ -1,7 +1,9 @@
 import { Flex, Box, Text, Image,Button,Spinner,useToast} from "@chakra-ui/react";
 import axios from "axios";
-import { useState } from "react";
+import { useState} from "react";
 import {useNavigate} from "react-router-dom"
+// import HoverImage from "react-hover-image"
+
 const AllProducts = ({
 	images,
 	title,
@@ -75,6 +77,7 @@ const mobiles=(title,images,price)=>{
 			  }
 			}).then((res) =>toast({description:"Product is added to cart",position:"top"}))
 	 }
+	 
 	return (
 		<>
 	
@@ -88,9 +91,11 @@ const mobiles=(title,images,price)=>{
 					rounded="lg"
 					shadow="lg"
 					position="relative"
-					h={{lg:"573px",md:"400px",sm:"20px"}}
-
-				>
+					// boxSize="300px"
+					// height="550px"
+					// h={{lg:"573px",md:"400px",sm:"20px"}}
+					
+					>
 					
 						<Image
 							src="https://icon-library.com/images/wishlist-icon/wishlist-icon-19.jpg"
@@ -104,8 +109,15 @@ const mobiles=(title,images,price)=>{
 
 					<Image
 						src={images[0]}
+						hoverSrc={images[2]}
 						alt={`Pic`}
 						roundedTop="xl"
+						boxSize="300px"
+						objectFit={"contain"}
+						w="100%"
+						_hover={{transform:"scale(1.15)",}}
+						transition={"0.2s ease-in-out"}
+						
                         //while clicking
 						onClick={() => navigate(`/productdetails/${_id}`)}
 					/>
