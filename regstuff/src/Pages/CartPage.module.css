@@ -113,3 +113,20 @@
     width: 100%;
     height: 55%;
 }
+@media all and (min-width:320px) and (max-width:679px){
+    .container{
+        display: block;
+    }
+    .boxScroll{
+        width: 100%;
+    }
+}
+/* medium screen */
+@media all and (min-width:680px) and (max-width:1024px){
+    .container{
+        display: block;
+    }
+    .boxScroll{
+        width: 100%;
+    }
+}
