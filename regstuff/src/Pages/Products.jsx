@@ -15,8 +15,8 @@ const Products = () => {
 
     useEffect(() => {
         axios
-			.get(`https://dailyobject-clonebe.onrender.com/data`)
-			.then((res) => setdata(res.data));
+            .get(`https://dailyobject-clonebe.onrender.com/data`)
+            .then((res) => setdata(res.data));
     }, []);
     useEffect((x) => {
         if(x==="iphone14"||x==="iphone Pro Max" ||x==="Galaxy M53"||x==="Oneplus 10"){
@@ -32,16 +32,12 @@ const Products = () => {
 
     //sorting
     const lowtohigh = () => {
-        const num1 = [...data].sort(
-            (a, b) => a.price - b.price
-        );
+        const num1 = [...data].sort((a, b) => a.price - b.price);
         setdata(num1);
     };
 
     const hightolow = () => {
-        const num2 = [...data].sort(
-            (a, b) => b.price - a.price
-        );
+        const num2 = [...data].sort((a, b) => b.price - a.price);
         setdata(num2);
     };
 
@@ -49,17 +45,17 @@ const Products = () => {
     const productbrand = (brand) => {
         setdata([]);
         axios
-					.get(`https://dailyobject-clonebe.onrender.com/data?brand=${brand}`)
-					.then((res) => setdata(res.data));
+            .get(`https://dailyobject-clonebe.onrender.com/data?brand=${brand}`)
+            .then((res) => setdata(res.data));
     };
 
     //Allproduct show
     const Allproductsshow = () => {
         setdata([]);
         axios
-		.get(`https://dailyobject-clonebe.onrender.com/data`)
-		.then((res) => setdata(res.data));
-    }
+            .get(`https://dailyobject-clonebe.onrender.com/data`)
+            .then((res) => setdata(res.data));
+    };
 
     return (
         <>
@@ -89,7 +85,6 @@ const Products = () => {
                         All
                     </Text>
                 </Box>
-
                 <Box value="iphone14" onClick={() => productbrand("iphone14")}>
                     <Image
                         borderRadius={"50%"}
@@ -102,7 +97,6 @@ const Products = () => {
                     iphone14
                     </Text>
                 </Box>
-
                 <Box  value="iphone14 Pro Max"
                     onClick={() => productbrand("iphone14 Pro Max")}>
                     <Image
@@ -136,17 +130,9 @@ const Products = () => {
                     />
                     <Text textAlign={"center"}>Oneplus</Text>
                 </Box>
-
-                
-                
-               
             </Box>
             </Box>
-            
             </Box>
-        
-            
-
             <Button
                 fontSize={"lg"}
                 display={"block"}
@@ -176,7 +162,7 @@ const Products = () => {
                             <Button
                                 borderRadius={"25px"}
                                 colorScheme="teal"
-                                backgroundColor="#20a87e"
+                                backgroundColor="#20A87E"
                                 variant="solid"
                                 display={"block"}
                                 mt="15px"
@@ -205,12 +191,9 @@ const Products = () => {
                     </Box>
                 )}
             </Box>
-        
         <Footer/>
         </>
-        
     );
-    
 };
 
 export default Products;

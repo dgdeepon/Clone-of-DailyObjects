@@ -22,10 +22,13 @@ import bannar6 from "../Assets/bannars/bannar6.webp";
 import bannar7 from "../Assets/bannars/bannar7.webp";
 import prod_gif from "../Assets/bannars/prod_video1.gif";
 import ProductCarousel from "../Carousel/ProductCarousel";
+import Navbar from "../Navbar/Navbar";
+import Footer from "../Footer/Footer";
 
 const LandingPage = () => {
     return (
         <div>
+            <Navbar />
             <Box>
                 <Image src={offerBannar} />
             </Box>
@@ -381,7 +384,11 @@ const LandingPage = () => {
                     <Stack spacing={3} mb={{ base: "15px" }}>
                         <Box>
                             <Heading
-                                fontSize={{lg:"50px",md:"40px", base:"35px"}}
+                                fontSize={{
+                                    lg: "50px",
+                                    md: "40px",
+                                    base: "35px",
+                                }}
                                 fontWeight={"600"}
                                 fontFamily={"Fira Sans Extra Condensed"}
                             >
@@ -418,6 +425,8 @@ const LandingPage = () => {
                     <Image src="https://images.dailyobjects.com/marche/assets/images/other/Our-Story-updated01.jpg?tr=cm-pad_crop,v-2,dpr-1" />
                 </Box>
             </Box>
+
+            <Footer />
         </div>
     );
 };
