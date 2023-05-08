@@ -16,6 +16,7 @@ import {
     ModalOverlay,
     Tooltip,
     useDisclosure,
+    useToast,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 
@@ -25,7 +26,7 @@ import rupay from "../Homepage/Footer/footer-assets/rupay-update.webp";
 import paytm from "../Homepage/Footer/footer-assets/paytm-update.webp";
 import upi from "../Homepage/Footer/footer-assets/upi-update.webp";
 import Navbar from "../Homepage/Navbar/Navbar";
-import Footer from "../Homepage/Footer/Footer";
+import { useNavigate } from "react-router-dom";
 
 const initialData = {
     cardnumber: "",
@@ -36,12 +37,39 @@ const initialData = {
 
 export const Payment = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
-
+    const toast = useToast();
+    const navigate = useNavigate();
     const [formData, setFormData] = useState(initialData);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
+    };
+
+    const handleSubmitPayment = (e) => {
+        if (
+            formData.cardnumber &&
+            formData.cvv &&
+            formData.year &&
+            formData.name
+        ) {
+            toast({
+                position: "top",
+                title: `Processing your Order.`,
+                status: "loading",
+                duration: 3000,
+                isClosable: true,
+            });
+            setTimeout(() => {
+                toast({
+                    position: "top",
+                    title: `Order Successfully Placed.`,
+                    status: "success",
+                    isClosable: true,
+                });
+                navigate("/");
+            }, 4000);
+        }
     };
 
     return (
@@ -240,7 +268,7 @@ export const Payment = () => {
 
             {/* ========================== Card Detail Model ======================== */}
 
-            <Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}>
+            <Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose} >
                 <ModalOverlay />
                 <ModalContent>
                     <ModalHeader>ADD CARD DETAILS</ModalHeader>
@@ -336,27 +364,44 @@ export const Payment = () => {
                         </Box>
                     </ModalBody>
                     <ModalFooter>
-                        <Button
-                            width={"full"}
-                            backgroundColor={"teal"}
-                            color={"white"}
-                            mr={3}
-                            onClick={(e) => {
-                                onClose();
-                                e.preventDefault();
-                            }}
-                        >
-                            Continue
-                        </Button>
+                        {formData.cardnumber &&
+                        formData.cvv &&
+                        formData.year &&
+                        formData.name ? (
+                            <Button
+                                width={"full"}
+                                backgroundColor={"teal"}
+                                color={"white"}
+                                mr={3}
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    handleSubmitPayment();
+                                    onClose();
+                                }}
+                            >
+                                Continue
+                            </Button>
+                        ) : (
+                            <Button
+                                isDisabled={true}
+                                width={"full"}
+                                backgroundColor={"teal"}
+                                color={"white"}
+                                mr={3}
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    handleSubmitPayment();
+                                    onClose();
+                                }}
+                            >
+                                Place Order
+                            </Button>
+                        )}
                     </ModalFooter>
                 </ModalContent>
             </Modal>
 
             {/* ========================== Card Details Model ======================== */}
-
-            {/* ========================== Otp Model ======================== */}
-
-            {/* ========================== Otp Model ======================== */}
         </div>
     );
 };

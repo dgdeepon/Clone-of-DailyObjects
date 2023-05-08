@@ -28,10 +28,12 @@ import {
     IoSearchOutline,
 } from "react-icons/io5";
 import "../Landing.css";
+import logo from "../../images/RS-removebg-preview.png";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { usercartproduct } from "../../redux/AllCartproductuserside/Action";
+
 
 export default function Navbar() {
     const { isOpen, onToggle } = useDisclosure();
@@ -44,6 +46,7 @@ useEffect(()=>{
 const {data}=cartdata
 
 const bagTotal =data.length>=1?data.length:0
+
 
     return (
         <Box>
@@ -96,7 +99,7 @@ const bagTotal =data.length>=1?data.length:0
                     >
                         <Link to="/">
                             <Image
-                                src="Logo"
+                                src={logo}
                                 w={{ lg: "240px", base: "100%" }}
                             />
                         </Link>
