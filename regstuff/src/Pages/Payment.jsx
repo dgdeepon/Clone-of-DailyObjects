@@ -1,6 +1,7 @@
 import {
     Box,
     Button,
+    Divider,
     Flex,
     FormControl,
     FormLabel,
@@ -14,11 +15,12 @@ import {
     ModalFooter,
     ModalHeader,
     ModalOverlay,
+    Text,
     Tooltip,
     useDisclosure,
     useToast,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import amex from "../Homepage/Footer/footer-assets/amex-update.webp";
 import visa from "../Homepage/Footer/footer-assets/visa-update.webp";
@@ -27,6 +29,8 @@ import paytm from "../Homepage/Footer/footer-assets/paytm-update.webp";
 import upi from "../Homepage/Footer/footer-assets/upi-update.webp";
 import Navbar from "../Homepage/Navbar/Navbar";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useSelector } from "react-redux";
 
 const initialData = {
     cardnumber: "",
@@ -40,6 +44,38 @@ export const Payment = () => {
     const toast = useToast();
     const navigate = useNavigate();
     const [formData, setFormData] = useState(initialData);
+    const {token}=useSelector((store)=> store.UserLoginReducer);
+    const token2=localStorage.getItem('token');
+
+    const [values, setValues] = useState({
+        totalQuantity: 0,
+        totalPrice: 0,
+    });
+    function getDetails() {
+        axios
+            .get(`${process.env.REACT_APP_CARTDATA}`, {
+                headers: {
+                    Authorization: `Bearer ${token || token2}`,
+                },
+            })
+            .then((res) => {
+                console.log(res);
+                let totalQ = 0;
+                let totalP = 0;
+                for (let i = 0; i < res.data.length; i++) {
+                    totalQ += res.data[i].quantity;
+                    totalP += res.data[i].quantity * res.data[i].price;
+                }
+                setValues({
+                    ...values,
+                    totalPrice: totalP,
+                    totalQuantity: totalQ,
+                });
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -53,6 +89,7 @@ export const Payment = () => {
             formData.year &&
             formData.name
         ) {
+            deleteCart();
             toast({
                 position: "top",
                 title: `Processing your Order.`,
@@ -71,6 +108,18 @@ export const Payment = () => {
             }, 4000);
         }
     };
+
+    const deleteCart = () => {
+        axios.delete(process.env.REACT_APP_DELETECART, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+        });
+    };
+
+    useEffect(() => {
+        getDetails();
+    }, []);
 
     return (
         <div>
@@ -263,12 +312,46 @@ export const Payment = () => {
                     borderLeft={"none"}
                 >
                     {/* Payment details goes here.. */}
+                    <Box
+                        textAlign={"left"}
+                        p={"30px"}
+                    >
+                        <Text as={"b"} fontSize={"xl"}>
+                            ORDER SUMMARY
+                        </Text>
+                        <Flex
+                            flexDirection={"row"}
+                            justifyContent={"space-between"}
+                        >
+                            <Text>
+                                Item Total ({values.totalQuantity} Item)
+                            </Text>
+                            <Text as={"b"}>Rs.{values.totalPrice}</Text>
+                        </Flex>
+                        <Flex
+                            flexDirection={"row"}
+                            justifyContent={"space-between"}
+                        >
+                            <Text>Shipping</Text>
+                            <Text color={"#eba194"} as={"b"}>
+                                FREE
+                            </Text>
+                        </Flex>
+                        <Divider />
+                        <Flex
+                            flexDirection={"row"}
+                            justifyContent={"space-between"}
+                        >
+                            <Text>Grand Total</Text>
+                            <Text as={"b"}>Rs.{values.totalPrice}</Text>
+                        </Flex>
+                    </Box>
                 </Box>
             </Flex>
 
             {/* ========================== Card Detail Model ======================== */}
 
-            <Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose} >
+            <Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
                 <ModalContent>
                     <ModalHeader>ADD CARD DETAILS</ModalHeader>

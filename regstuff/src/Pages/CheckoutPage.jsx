@@ -107,7 +107,7 @@ function CheckoutPage() {
             <Text>Grand Total</Text>
             <Text as={'b'}>Rs.{values.totalPrice}</Text>
             </Flex>
-            <Link to={''}>
+            <Link to={'/payment'}>
             <Button bgColor={'#20a87e'} textColor={'white'} _hover={{color:'black',bgColor:'#B3FFAE'}} w={'100%'}>CONTINUE</Button>
             </Link>
         </Box>
