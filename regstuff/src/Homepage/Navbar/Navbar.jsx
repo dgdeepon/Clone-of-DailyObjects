@@ -29,11 +29,21 @@ import {
 } from "react-icons/io5";
 import "../Landing.css";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { usercartproduct } from "../../redux/AllCartproductuserside/Action";
 
 export default function Navbar() {
     const { isOpen, onToggle } = useDisclosure();
+    const dispatch=useDispatch()
+const cartdata=useSelector((state)=>state.usercartreducer)
 
-    const bagTotal = 0;
+useEffect(()=>{
+    dispatch(usercartproduct)
+},[])
+const {data}=cartdata
+
+const bagTotal =data.length>=1?data.length:0
 
     return (
         <Box>

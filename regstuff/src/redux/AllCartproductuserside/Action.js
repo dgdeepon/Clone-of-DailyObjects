@@ -13,7 +13,7 @@ export const usercartfailure=()=>{
 export const usercartproduct=(dispatch)=>{
     dispatch(usercartrequest())
     const token=localStorage.getItem("token")
-    console.log(token)
+
     axios.get("https://dailyobject-clonebe.onrender.com/cartData",{
         				headers: {
         					Authorization: `Bearer ${token}`
