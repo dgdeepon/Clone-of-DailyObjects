@@ -6,6 +6,7 @@ import UserRegister from "../Pages/Register";
 import PrivateRoute from "./PrivateRoute";
 import LandingPage from "../Homepage/LandingPage/LandingPage";
 import Products from "../Pages/Products";
+import { Payment } from "../Pages/Payment";
 
 function MainRoute() {
     return (
@@ -22,6 +23,14 @@ function MainRoute() {
                 }
             />
             <Route path="/products" element={<Products />} />
+            <Route
+                path="/payment"
+                element={
+                    <PrivateRoute>
+                        <Payment />
+                    </PrivateRoute>
+                }
+            />
         </Routes>
     );
 }
