@@ -15,12 +15,12 @@ const CartPage = () => {
     useEffect(()=>{
       getData();
     },[])
-
+const token=localStorage.getItem("token")
     const getData=()=>{
         fetch("https://dailyobject-clonebe.onrender.com/cartData",{
             method:"GET",
             headers:{
-                "Authorization":"bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDU3NDZhYTA1NjdiMGEyZmU1M2ExZTUiLCJpYXQiOjE2ODM0ODU5NTZ9.lUu7l5ghCQaQ2ZsWt7toVjIQNi_LUm-kyprB_LH4Ixo",
+                "Authorization":`bearer ${token}`,
                 "Content-type":"application/json()"
             }
         }).then((res)=>res.json()).then((res)=>{
