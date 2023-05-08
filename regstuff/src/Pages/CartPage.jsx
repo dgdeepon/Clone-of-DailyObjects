@@ -25,7 +25,7 @@ const CartPage = () => {
         // console.log(id)
         // console.log(typeof quantity,quantity)
         const token=localStorage.getItem("token")
-        axios.patch(`https://dailyobject-clonebe.onrender.com/cartData/cartEdit/${id}`,{"quantity":quantity},{
+        axios.patch(`${process.env.REACT_APP_CARTDATA}/cartEdit/${id}`,{"quantity":quantity},{
             headers: {
                 Authorization: `Bearer ${token}`
               }
@@ -38,7 +38,7 @@ const CartPage = () => {
 const handleDelete=(id)=>{
 
   const token=localStorage.getItem("token")
-        axios.delete(`https://dailyobject-clonebe.onrender.com/cartData/cartDelete/${id}`,{
+        axios.delete(`${process.env.REACT_APP_CARTDATA}/cartDelete/${id}`,{
             headers: {
                 Authorization: `Bearer ${token}`
               }
@@ -52,7 +52,7 @@ const handleDelete=(id)=>{
     },[])
 const token=localStorage.getItem("token")
     const getData=()=>{
-        fetch("https://dailyobject-clonebe.onrender.com/cartData",{
+        fetch(process.env.REACT_APP_CARTDATA,{
             method:"GET",
             headers:{
                 "Authorization":`bearer ${token}`,

@@ -13,5 +13,5 @@ export const adminloginsuccess=(payload)=>{
 
 export const adminlogin=(obj)=>(dispatch)=>{
     dispatch(adminloginrequest())
-    return axios.post("https://dailyobject-clonebe.onrender.com/admin/login",obj)
+    return axios.post(`${process.env.REACT_APP_ADMIN}/login`,obj)
 }

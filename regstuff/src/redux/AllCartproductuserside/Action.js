@@ -14,7 +14,7 @@ export const usercartproduct=(dispatch)=>{
     dispatch(usercartrequest())
     const token=localStorage.getItem("token")
 
-    axios.get("https://dailyobject-clonebe.onrender.com/cartData",{
+    axios.get(process.env.REACT_APP_CARTDATA,{
         				headers: {
         					Authorization: `Bearer ${token}`
         				  }

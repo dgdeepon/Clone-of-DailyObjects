@@ -12,7 +12,7 @@ export const allproductfailure=()=>{
 }
 export const allproduct=(dispatch)=>{
     dispatch(allproductrequest())
-    axios.get("https://dailyobject-clonebe.onrender.com/data").then((res)=>{
+    axios.get(process.env.REACT_APP_DATA).then((res)=>{
         // console.log(res.data)
         dispatch(allproductsuccess(res.data))
 

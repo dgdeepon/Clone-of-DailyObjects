@@ -13,5 +13,5 @@ export const singleproductfailure=()=>{
 export const singleproduct=(id)=>(dispatch)=>{
   
     dispatch(singleproductrequest())
-    return axios.get(`https://dailyobject-clonebe.onrender.com/data/${id}`)
+    return axios.get(`${process.env.REACT_APP_DATA}/${id}`)
 }

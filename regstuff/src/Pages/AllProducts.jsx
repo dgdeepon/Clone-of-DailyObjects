@@ -29,7 +29,7 @@ const navigate=useNavigate()
 				position: "top",
 			});
 		   }else{
-			   axios.get("https://dailyobject-clonebe.onrender.com/cartData",{
+			   axios.get(process.env.REACT_APP_CARTDATA,{
 				headers: {
 					Authorization: `Bearer ${token}`
 				  }
@@ -71,7 +71,7 @@ const mobiles=(title,images,price)=>{
 		// const {title,price,image,quantity}=payload
 		// console.log(title,price,image,quantity)
 		// console.log(typeof price)
-		axios.post("https://dailyobject-clonebe.onrender.com/cartData/addToCart",{"title":title,price:Number(price),image:images[0],quantity:1}, {
+		axios.post(`${process.env.REACT_APP_CARTDATA}/addToCart`,{"title":title,price:Number(price),image:images[0],quantity:1}, {
 			headers: {
 				Authorization: `Bearer ${token}`
 			  }

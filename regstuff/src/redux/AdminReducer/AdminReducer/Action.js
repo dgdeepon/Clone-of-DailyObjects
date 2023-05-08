@@ -13,7 +13,7 @@ export const admindatafailure=()=>{
 export const alladmindata=(dispatch)=>{
     dispatch(admindatarequest())
     const token=localStorage.getItem("admintoken")
-    axios.get("https://dailyobject-clonebe.onrender.com/admin/adminList",{
+    axios.get(`${process.env.REACT_APP_ADMIN}/adminList`,{
         headers: {
             Authorization: `Bearer ${token}`
           }
