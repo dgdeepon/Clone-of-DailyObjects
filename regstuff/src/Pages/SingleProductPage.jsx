@@ -11,6 +11,8 @@ import { useEffect } from 'react';
 import { useToast,Button } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import Navbar from '../Homepage/Navbar/Navbar';
+import Footer from '../Homepage/Footer/Footer';
 // import { useState, useEffect } from 'react';
 
 const initialstate={
@@ -124,6 +126,7 @@ console.log(title,images,price)
 
   return (
     <>
+    <Navbar/>
     <div className={styles.container} >
 
       <div className={styles.box} style={{backgroundColor:"#f7f7f7"}} >
@@ -322,23 +325,10 @@ console.log(title,images,price)
       <br/>
     
     
-      <Text fontSize='3xl' as='b' >CUSTOMER REVIEWS</Text>
-      <br/>
-      <br/>
-      <Square w='100%' size='300px'  color='black'>
-
-          <Box  h='100%' w='22%' p={4} color='black'>
-          <br/>
-          <Text fontSize='xl'  >DailyObjects Stride 2.0 Clear Case Cover For</Text>
-          <br/>
-              <Center p='3' bg='green' color='white'>
-                <a href="" style={{color:"white",textDecorationLine:"none" }}>BE THE FIRDT TO WRITE A REVIEW</a>
-              </Center>
-          </Box>
-      </Square>
-      <br/>
+      
+ 
     
-
+<Footer/>
     </>
    
   )
