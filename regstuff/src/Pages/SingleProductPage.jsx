@@ -43,9 +43,18 @@ const initState=
     "hex": "#0f2338",
     "mrp": 2199
 }
-
+const initialstate={
+  additional_info:"",
+  "images":[],
+  "brand":"",
+  "category":"",
+  "mrp":"",
+  "price":"",
+  "hex":"",
+  "color":""
+}
 const SingleProductPage = () => {
-  const [singledata,setSingledata]=useState([])
+  const [singledata,setSingledata]=useState(initState)
 const {id}=useParams()
   useEffect(()=>{
     getData(id);
@@ -72,13 +81,13 @@ console.log(singledata)
       </div>
 
       <div className={styles.box}>
-        <a href="">{singledata.brand}</a>
+        <a href="">{typeof singledata!=="undefined"&&singledata.brand}</a>
         <br/>
         <br/>
-        <Text fontSize='xl' >{singledata.title}</Text>
+        <Text fontSize='xl' >{typeof singledata!=="undefined"&&singledata.title}</Text>
         <br/>
        
-        <Text fontSize='3xl' as='b' >Rs.{singledata.price}</Text>
+        <Text fontSize='3xl' as='b' >Rs.{typeof singledata!=="undefined"&&singledata.price}</Text>
         <br/>
         <br/>
         <Center marginLeft="15%" bg='green' h='8%' w="70%" color='white'>
@@ -92,7 +101,7 @@ console.log(singledata)
 
         <Box w='100%' p={2} color='black'>
              <p>Buy 1 Get 1 Free</p>
-             <p>{typeof singledata!=="undefined"&&singledata.additional_info.name1}</p>
+             <p>{(typeof singledata!=="undefined"&&singledata.additional_info.name1)&&singledata.additional_info.name1}</p>
         </Box>
           <hr width="90%"/>
           <br/>
@@ -151,37 +160,37 @@ console.log(singledata)
 
       </div>
     </div>
-
+    {typeof singledata!=="undefined"&&singledata.images[1]&&
     <div className={styles.container} >
       <div className={styles.box} style={{display:"flex",alignItems:"center",justifyContent:"center"}}>
         <div>
-        <Text fontSize='3xl' as='b' >{typeof singledata!=="undefined"&&singledata.additional_info.name1}</Text>
-        <p>{typeof singledata!=="undefined"&&singledata.additional_info.details1}</p>
+        <Text fontSize='3xl' as='b' >{typeof singledata!=="undefined"&&singledata.additional_info.name1&&singledata.additional_info.name1}</Text>
+        <p>{typeof singledata!=="undefined"&&singledata.additional_info.details1&&singledata.additional_info.details1}</p>
         </div>
       </div>
       <div className={styles.box} style={{backgroundColor:"#f7f7f7"}} >
         <img style={{width:"100%",height:"100%"}}
-        src={typeof singledata!=="undefined"&&singledata.images[1]&&singledata.images[1]} alt="" />
+        src={(typeof singledata!=="undefined"&&singledata.images[1])&&singledata.images[1]} alt="" />
       </div>
-    </div>
+    </div>}
 
-
+    {typeof singledata!=="undefined"&&singledata.images[2]&&
     <div className={styles.container} >
       
       <div className={styles.box} style={{backgroundColor:"#f7f7f7"}} >
         <img style={{width:"100%",height:"100%"}}
-        src={typeof singledata!=="undefined"&&singledata.images[2]&&singledata.images[2]} alt="" />
+        src={(typeof singledata!=="undefined"&&singledata.images[2])&&singledata.images[2]} alt="" />
       </div>
 
       <div className={styles.box} style={{display:"flex",alignItems:"center",justifyContent:"center"}}>
         <div>
-        <Text fontSize='3xl' as='b' >{typeof singledata!=="undefined"&&singledata.additional_info.name2&&singledata.additional_info.name2}</Text>
-        <p>{typeof singledata!=="undefined"&&singledata.additional_info.details2&&singledata.additional_info.details2}</p>
+        <Text fontSize='3xl' as='b' >{(typeof singledata!=="undefined"&&singledata.additional_info.name2)&&singledata.additional_info.name2}</Text>
+        <p>{(typeof singledata!=="undefined"&&singledata.additional_info.details2)&&singledata.additional_info.details2}</p>
         </div>
       </div>
-    </div>
+    </div>}
 
-
+    {typeof singledata!=="undefined"&&singledata.images[3]&&
     <div className={styles.container} >
       <div className={styles.box} style={{display:"flex",alignItems:"center",justifyContent:"center"}}>
         <div>
@@ -195,9 +204,9 @@ console.log(singledata)
         <img style={{width:"100%",height:"100%"}}
         src={typeof singledata!=="undefined"&&singledata.images[3]&&singledata.images[3]} alt="" />
       </div>
-    </div>
+    </div>}
 
-
+    {typeof singledata!=="undefined"&&singledata.images[4]&&
     <div className={styles.container} >
       <div className={styles.box} style={{backgroundColor:"#f7f7f7"}} >
         <img style={{width:"100%",height:"100%"}}
@@ -211,9 +220,9 @@ console.log(singledata)
         </div>
       </div>
     </div>
-
+}
     
-
+    {typeof singledata!=="undefined"&&singledata.images[5]&&
     <div className={styles.container} >
       <div className={styles.box} style={{display:"flex",alignItems:"center",justifyContent:"center"}}>
         <div>
@@ -227,37 +236,37 @@ console.log(singledata)
         <img style={{width:"100%",height:"100%"}}
         src={typeof singledata!=="undefined"&&singledata.images[5]&&singledata.images[5]} alt="" />
       </div>
-    </div>
-
+    </div>}
+    {typeof singledata!=="undefined"&&singledata.images[2]&&
     <div className={styles.container} >
       <div className={styles.box} style={{backgroundColor:"#f7f7f7"}} >
         <img style={{width:"100%",height:"100%"}}
-        src={initState.images[2]} alt="" />
+        src={typeof singledata!=="undefined"&&singledata.images[2]&&singledata.images[2]} alt="" />
       </div>
       <div className={styles.box} style={{display:"flex",alignItems:"center",justifyContent:"center"}}>
         <div>
         
-        <Text fontSize='3xl' as='b' >{initState.additional_info.name6}</Text>
-        <p>{initState.additional_info.details6}</p>
+        <Text fontSize='3xl' as='b' >{typeof singledata!=="undefined"&&singledata.additional_info.name6&&singledata.additional_info.name6}</Text>
+        <p>{typeof singledata!=="undefined"&&singledata.additional_info.details6&&singledata.additional_info.details6}</p>
         </div>
       </div>
-    </div>
+    </div>}
 
-
+{typeof singledata!=="undefined"&&singledata.images[0]&&
     <div className={styles.container} >
       <div className={styles.box} style={{display:"flex",alignItems:"center",justifyContent:"center"}}>
         <div>
         
-        <Text fontSize='3xl' as='b' >{initState.additional_info.name1}</Text>
-        <p>{initState.additional_info.name1}</p>
+        <Text fontSize='3xl' as='b' >{typeof singledata!=="undefined"&&singledata.additional_info.name1&&singledata.additional_info.name1}</Text>
+        <p>{typeof singledata!=="undefined"&&singledata.additional_info.name1&&singledata.additional_info.name1}</p>
         </div>
       </div>
 
       <div className={styles.box} style={{backgroundColor:"#f7f7f7"}} >
         <img style={{width:"100%",height:"100%"}}
-        src={initState.images[0]} alt="" />
+        src={typeof singledata!=="undefined"&&singledata.images[0]&&singledata.images[0]} alt="No Image For This" />
       </div>
-    </div>
+    </div>}
       <br/>
     
     
