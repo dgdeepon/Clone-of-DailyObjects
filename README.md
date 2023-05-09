@@ -10,8 +10,11 @@ Deployed Link of project : https://vestal-time-2973.vercel.app/
 @dgdeepon (Team Lead)
 
 @justtJayesh
+
 @sonuparjapat
+
 @Pannakbhushana
+
 @Fitabhi7996
 
 Landing Page:
