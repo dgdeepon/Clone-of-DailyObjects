@@ -10,6 +10,7 @@ Deployed Link of project : https://vestal-time-2973.vercel.app/
 # TECH STACK
 
 FRONTEND : REACT | REDUX | CHAKRA UI | MATERIAL UI
+BACKEND :  NODEJS | EXPRESSJS | MONGODB 
 
 # TEAM
 @dgdeepon (Team Lead)
