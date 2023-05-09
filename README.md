@@ -16,13 +16,13 @@ BACKEND :  NODEJS | EXPRESSJS | MONGODB
 # TEAM
 [@dgdeepon (Team Lead)](https://github.com/dgdeepon)
 
-@justtJayesh
+[@justtJayesh](https://github.com/justtJayesh)
 
-@sonuparjapat
+[@sonuparjapat](https://github.com/sonuparjapat)
 
-@Pannakbhushana
+[@Pannakbhushana](https://github.com/Pannakbhushana)
 
-@Fitabhi7996
+[@Fitabhi7996](https://github.com/Fitabhi7996)
 
 
 
