@@ -14,7 +14,7 @@ FRONTEND : REACT | REDUX | CHAKRA UI | MATERIAL UI
 BACKEND :  NODEJS | EXPRESSJS | MONGODB 
 
 # TEAM
-@dgdeepon (Team Lead)
+[@dgdeepon (Team Lead)](https://github.com/dgdeepon)
 
 @justtJayesh
 
