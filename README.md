@@ -3,6 +3,16 @@ Clone of DailyObjects
 
 Founded in 2012, DailyObjects is a design-obsessed lifestyle accessories brand committed to making your everyday carry #lessordinary.
 
+Original Site : https://www.dailyobjects.com/
+Deployed Link of project : https://vestal-time-2973.vercel.app/
+
+#TEAM
+@dgdeepon (Team Lead)
+@justtJayesh
+@sonuparjapat
+@Pannakbhushana
+@Fitabhi7996
+
 Landing Page:
 ![Screenshot 2023-05-08 at 9 23 36 PM](https://user-images.githubusercontent.com/115465646/236870861-937269be-9cb3-4032-a422-72ea5f76449a.png)
 
