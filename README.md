@@ -5,7 +5,7 @@ Founded in 2012, DailyObjects is a design-obsessed lifestyle accessories brand c
 
 Original Site : https://www.dailyobjects.com/
 
-Deployed Link of project : https://vestal-time-2973.vercel.app/
+Deployed Link of project : https://regstuff.vercel.app/
 
 # TECH STACK
 
