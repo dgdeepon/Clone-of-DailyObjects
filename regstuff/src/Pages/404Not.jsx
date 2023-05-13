@@ -5,7 +5,7 @@ function NotFound() {
   return (
     <>
     <Navbar/>
-    <div>404Not</div>
+    <div>It looks like this page does not exist.</div>
     </>
   )
 }
