@@ -336,7 +336,7 @@ const Footer = () => {
                         borderTop={{ lg: "none", base: "1px solid ligthgrey" }}
                         borderBottom={"none"}
                     >
-                        <Stack spacing={3}>
+                        {/* <Stack spacing={3}>
                             <Heading
                                 fontSize={"26px"}
                                 fontFamily={"Fira Sans Extra Condensed"}
@@ -352,12 +352,12 @@ const Footer = () => {
                                     <Image src={ios} />
                                 </Box>
                             </HStack>
-                        </Stack>
+                        </Stack> */}
                     </Box>
                 </Box>
             </Box>
 
-            <Box
+            {/* <Box
                 padding={"20px 2px 40px 2px"}
                 borderBottom={"1px solid lightgrey"}
             >
@@ -405,7 +405,7 @@ const Footer = () => {
                         </HStack>
                     </Flex>
                 </Box>
-            </Box>
+            </Box> */}
 
             <Box
                 h={20}
