@@ -1,4 +1,4 @@
-# vestal-time-2973
+# Clone of DailyObjects
 Clone of DailyObjects
 
 Founded in 2012, DailyObjects is a design-obsessed lifestyle accessories brand committed to making your everyday carry #lessordinary.
