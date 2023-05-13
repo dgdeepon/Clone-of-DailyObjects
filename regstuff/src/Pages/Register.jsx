@@ -38,7 +38,13 @@ function UserRegister() {
             })
            return navi('/userLogin');
         }).catch((err)=>{
-            console.log(err);
+            // console.log(err);
+            toast({
+                title: 'User is already registered!',
+                status: 'error',
+                duration: 4000,
+                isClosable: true,
+            })
         });
     }
 
