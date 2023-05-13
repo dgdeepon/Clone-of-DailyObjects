@@ -5,7 +5,6 @@ import Account from "../Pages/Account";
 import UserRegister from "../Pages/Register";
 import PrivateRoute from "./PrivateRoute";
 import LandingPage from "../Homepage/LandingPage/LandingPage";
-import Products from "../Pages/Products";
 import SingleProductPage from "../Pages/SingleProductPage";
 import CartPage from "../Pages/CartPage";
 import CheckoutPage from "../Pages/CheckoutPage";
@@ -21,7 +20,7 @@ import EditProduct from "../Admin/AdminDashboard/components/EditProduct";
 import AddProduct from "../Admin/AdminDashboard/components/AddProduct";
 import AdminProducts from "../Admin/AdminDashboard/components/AdminProducts";
 import NotFound from "../Pages/404Not";
-
+import Products from "../Pages/Products";
 function MainRoute() {
     return (
         <Routes>

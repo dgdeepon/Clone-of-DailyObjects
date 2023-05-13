@@ -64,7 +64,7 @@ const bagTotal =data.length>=1?data.length:''
                 <Flex
                     flex={{ base: 1, md: "auto" }}
                     ml={{ base: -2 }}
-                    display={{ base: "flex", md: "none" }}
+                    display={{ base: "flex", md: "flex",lg:'none' }}
                 >
                     <IconButton
                         onClick={onToggle}
@@ -94,7 +94,7 @@ const bagTotal =data.length>=1?data.length:''
                     <Box
                         textAlign={useBreakpointValue({
                             base: "center",
-                            md: "left",
+                            lg:"left"
                         })}
                     >
                         <Link to="/">
@@ -107,7 +107,7 @@ const bagTotal =data.length>=1?data.length:''
 
                     <Box w={"100%"}>
                         <Flex
-                            display={{ base: "none", md: "flex" }}
+                            display={{ base: "none",lg:"flex" }}
                             // alignItems={{ lg: "center" }}
                         >
                             <Box margin={"auto"}>
@@ -117,7 +117,7 @@ const bagTotal =data.length>=1?data.length:''
                     </Box>
                 </Flex>
                 <Stack
-                    flex={{ base: 1, md: 0 }}
+                    flex={{ base: 1, lg: 0 }}
                     justify={"flex-end"}
                     direction={"row"}
                     spacing={{ lg: 4, base: 1 }}
@@ -157,6 +157,7 @@ const bagTotal =data.length>=1?data.length:''
                         fontWeight={400}
                         variant={"link"}
                         href={"#"}
+                        display={{base:'none',lg:'inline-block'}}
                     >
                         <IoSearchOutline size={20} color="black" />
                     </Button>
@@ -189,7 +190,7 @@ const DesktopNav = () => {
                             <PopoverTrigger>
                                 <Link
                                     p={2}
-                                    to={"/products-men"} //---------> add product section link here
+                                    to={"/products"} //---------> add product section link here
                                     fontSize={"16px"}
                                     fontWeight={500}
                                     color={linkColor}
@@ -332,7 +333,7 @@ const MobileNav = () => {
         <Stack
             bg={useColorModeValue("white", "gray.800")}
             p={4}
-            display={{ md: "none" }}
+            display={{ lg: "none" }}
         >
             {NAV_ITEMS.map((navItem) => (
                 <MobileNavItem key={navItem.label} {...navItem} />
@@ -348,8 +349,6 @@ const MobileNavItem = ({ label, children, href }) => {
         <Stack spacing={4} onClick={children && onToggle}>
             <Flex
                 py={2}
-                as={Link}
-                href={href ?? "#"}
                 justify={"space-between"}
                 align={"center"}
                 _hover={{
@@ -359,6 +358,7 @@ const MobileNavItem = ({ label, children, href }) => {
                 <Text
                     fontWeight={600}
                     color={useColorModeValue("gray.600", "gray.200")}
+                    as={'a'}
                 >
                     {label}
                 </Text>
@@ -388,7 +388,7 @@ const MobileNavItem = ({ label, children, href }) => {
                 >
                     {children &&
                         children.map((child) => (
-                            <Link key={child.label} py={2} href={child.href}>
+                            <Link key={child.label} py={2} to={child.href}>
                                 {child.label}
                             </Link>
                         ))}
