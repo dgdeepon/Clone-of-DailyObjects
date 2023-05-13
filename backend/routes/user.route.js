@@ -23,17 +23,22 @@ user.post('/login',async(req,res)=>{
 });
 
 // register
-user.post('/register',(req,res)=>{
+user.post('/register',async(req,res)=>{
     try {
-        bcrypt.hash(req.body.password,6,async(err,hash)=>{
-            if(hash){
-                const user=new UserModel({name:req.body.name,email:req.body.email,department:req.body.department,password:hash});
-                await user.save();
-                res.status(201).send({"success":"user register successful"});
-            }else{
-                res.status(501).send({"error":"failed to hash the password"});
-            }
-        })
+        const data=await UserModel.findOne({email:req.body.email});
+        if(data){
+            res.status(501).send({"Error":"User is already registered"});
+        }else{
+            bcrypt.hash(req.body.password,6,async(err,hash)=>{
+                if(hash){
+                    const user=new UserModel({name:req.body.name,email:req.body.email,department:req.body.department,password:hash});
+                    await user.save();
+                    res.status(201).send({"success":"user register successful"});
+                }else{
+                    res.status(501).send({"error":"failed to hash the password"});
+                }
+            })
+        }
     } catch (error) {
         res.status(501).send({"error":"failed to create new user"});
     }
